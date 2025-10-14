@@ -5,15 +5,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Muhammad Areeb Rizwan | Cyber-Mechanical Engineer</title>
     <meta name="description" content="Muhammad Areeb Rizwan - Specializing in innovative mechanical engineering, research, and technical leadership with a focus on cutting-edge systems.">
+    <!-- Preload critical resources -->
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800;900&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800;900&display=swap"></noscript>
     <!-- Load Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800;900&display=swap" rel="stylesheet">
     
     <style>
         /* --- Cyber-Engineering Theme Variables --- */
         :root {
-            --deep-space: #030712; /* Darker than before */
-            --electric-blue: #06B6D4; /* Brighter Cyan 500/600 */
+            --deep-space: #030712;
+            --electric-blue: #06B6D4;
             --neon-glow-light: rgba(6, 182, 212, 0.6);
             --neon-glow-dark: rgba(6, 182, 212, 0.2);
             --off-white: #F9FAFB;
@@ -39,7 +41,6 @@
                 linear-gradient(to bottom, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
             background-size: 30px 30px;
             z-index: -20;
-            /* Subtle animation for a 'data flow' feel */
             animation: grid-scroll 120s linear infinite;
         }
 
@@ -109,6 +110,21 @@
             opacity: 1;
             transform: translateY(0);
         }
+
+        /* Focus styles for accessibility */
+        a:focus, button:focus {
+            outline: 2px solid var(--electric-blue);
+            outline-offset: 2px;
+        }
+
+        /* Reduced motion for accessibility */
+        @media (prefers-reduced-motion: reduce) {
+            * {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+            }
+        }
     </style>
 </head>
 <body class="selection:bg-cyan-700 selection:text-white">
@@ -119,12 +135,12 @@
     <div class="fixed inset-0 pointer-events-none -z-10" style="background: radial-gradient(circle at 80% 10%, rgba(6, 182, 212, 0.1) 0%, transparent 40%);"></div>
 
     <!-- Header & Navigation (Fixed, Glassy Bar) -->
-    <header id="header" class="header-bg fixed top-0 w-full z-50 transition duration-300">
+    <header id="header" class="header-bg fixed top-0 w-full z-50 transition duration-300" role="banner">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex justify-between items-center">
-            <a href="#hero" class="text-3xl font-extrabold tracking-widest text-white text-neon">
+            <a href="#hero" class="text-3xl font-extrabold tracking-widest text-white text-neon" aria-label="Home - Muhammad Areeb Rizwan">
                 MA<span class="text-electric-blue">R</span>
             </a>
-            <nav>
+            <nav role="navigation" aria-label="Main navigation">
                 <ul class="flex space-x-8 text-lg font-medium">
                     <li><a href="#hero" class="text-slate-300 hover:text-electric-blue hover:text-neon transition duration-300">Home</a></li>
                     <li><a href="#skills" class="text-slate-300 hover:text-electric-blue hover:text-neon transition duration-300">Expertise</a></li>
@@ -136,7 +152,7 @@
         </div>
     </header>
 
-    <main class="pt-24">
+    <main class="pt-24" role="main">
         
         <!-- === 1. Hero Section (Home) - High Impact Introduction === -->
         <section id="hero" class="min-h-screen flex items-center justify-center p-8 relative">
@@ -175,6 +191,7 @@
                              alt="Muhammad Areeb Rizwan Professional Portrait" 
                              id="avatar-img"
                              onerror="this.onerror=null; this.src='https://placehold.co/300x300/030712/94A3B8?text=MAR';" 
+                             loading="lazy"
                         >
                     </div>
                 </div>
@@ -409,7 +426,7 @@
     </main>
 
     <!-- Footer -->
-    <footer class="bg-gray-900/50 border-t border-electric-blue/20 py-6 text-center text-slate-500">
+    <footer class="bg-gray-900/50 border-t border-electric-blue/20 py-6 text-center text-slate-500" role="contentinfo">
         <p class="text-sm">&copy; 2025 Muhammad Areeb Rizwan. All Rights Reserved. | Designed for High Impact.</p>
     </footer>
 
@@ -470,6 +487,11 @@
                     window.open(this.href, '_blank');
                 }
             });
+        });
+
+        // Error handling for external resources
+        window.addEventListener('error', function(e) {
+            console.log('Resource loading error:', e);
         });
     </script>
 </body>
