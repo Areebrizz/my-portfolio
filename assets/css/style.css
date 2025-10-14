@@ -36,15 +36,11 @@ html, body { width:100%; height:100%; font-family: 'Poppins', sans-serif; overfl
 .avatar-container { 
   position: relative; 
   z-index:3; /* Increased Z-index to ensure visibility */
-  padding: 20px;
+  /* Reduced padding for a tighter halo */
+  padding: 10px; 
   border-radius: 50%;
-  /* Pulsating, glowing halo for a "wow" factor */
-  background: radial-gradient(circle, rgba(255,255,255,0.2) 0%, rgba(255,255,255,0) 70%); 
-  animation: pulse 4s ease-in-out infinite;
-}
-@keyframes pulse {
-    0%, 100% { box-shadow: 0 0 0 0 rgba(255,255,255, 0.5); }
-    50% { box-shadow: 0 0 20px 10px rgba(255,255,255, 0.7); }
+  /* Subtle radial background glow for blending */
+  background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0) 70%); 
 }
 
 #avatar {
@@ -54,22 +50,24 @@ html, body { width:100%; height:100%; font-family: 'Poppins', sans-serif; overfl
   object-fit: cover; /* Ensures the image fills the circle */
   border-radius: 50%;
   animation: float 3s ease-in-out infinite;
-  box-shadow: 0 5px 30px rgba(0,0,0,0.5); /* Stronger shadow */
-  border: 4px solid #fff; /* White border to enhance the "floating" effect */
+  /* Enhanced shadow/glow for a floating, blended look */
+  box-shadow: 0 0 0 5px rgba(255, 255, 255, 0.4), /* Faint white aura for ethereal look */
+              0 15px 35px rgba(0, 0, 0, 0.6); /* Deep shadow for 3D depth */
+  border: 4px solid rgba(255, 255, 255, 0.8); 
 }
 @keyframes float {
   0%,100% { transform: translateY(0px) rotateX(0deg); }
-  50% { transform: translateY(-10px) rotateX(5deg); }
+  50% { transform: translateY(-8px) rotateX(2deg); } /* Reduced float distance and subtle tilt */
 }
 
 /* Small clouds around avatar (Now more subtle and ethereal) */
 .avatar-cloud {
-  width: 50px; /* Slightly larger */
+  width: 50px; 
   height: 25px;
   background: rgba(255,255,255,0.6);
   border-radius: 50px;
   position: absolute;
-  animation: floatCloud 8s linear infinite alternate; /* Slower, smoother animation */
+  animation: floatCloud 8s linear infinite alternate; 
   filter: blur(2px); /* Ethereal blur effect */
 }
 @keyframes floatCloud {
@@ -82,13 +80,13 @@ h1 {
     font-family: 'Poppins', sans-serif;
     font-size: 3rem; 
     margin-top:20px; 
-    color:#fff; /* White text for contrast against dark sky */
+    color:#fff; 
     text-shadow: 1px 1px 5px rgba(0,0,0,0.4);
 }
 p { 
     font-size: 1.5rem; 
     margin-top:10px; 
-    color:#e0e7ff; /* Light blue/white for professionalism */
+    color:#e0e7ff; 
     font-weight: 600;
     letter-spacing: 1px;
 }
@@ -98,26 +96,25 @@ p {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  gap: 30px; /* Increased gap */
+  gap: 30px; 
   margin-top:40px;
   position: relative;
   z-index:3;
 }
 .cloud {
-  background: rgba(255,255,255,0.95); /* Near-white background */
-  color:#1e3a8a; /* Dark blue text */
-  padding: 15px 30px; /* Larger hit area */
+  background: rgba(255,255,255,0.95); 
+  color:#1e3a8a; 
+  padding: 15px 30px; 
   border-radius:50px;
   font-weight:700;
   cursor:pointer;
   box-shadow: 0 8px 15px rgba(0,0,0,0.25);
   transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94), box-shadow 0.4s;
-  /* Added a subtle tilt for a dynamic feel */
   transform: rotateZ(-1deg); 
 }
 .cloud:hover { 
     transform: translateY(-15px) scale(1.15) rotateZ(0deg); 
-    background:#e0f2fe; /* Light hover effect */
+    background:#e0f2fe; 
     box-shadow: 0 15px 25px rgba(0,0,0,0.4); 
 }
 
@@ -127,7 +124,7 @@ footer {
     bottom:20px; 
     width:100%; 
     text-align:center; 
-    color:#c7d2fe; /* Light color to stand out */
+    color:#c7d2fe; 
     z-index:2; 
     font-size:0.8rem; 
     text-shadow: 1px 1px 3px rgba(0,0,0,0.3);
