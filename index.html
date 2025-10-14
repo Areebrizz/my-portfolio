@@ -5,102 +5,26 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Muhammad Areeb Rizwan | Mechanical Engineer & Future Leader</title>
   <meta name="description" content="Portfolio of Muhammad Areeb Rizwan – Mechanical Engineer, entrepreneur, researcher, and aspiring global leader.">
-  <style>
-    /* Reset */
-    * { margin:0; padding:0; box-sizing: border-box; }
-    html, body { width:100%; height:100%; font-family: Arial, sans-serif; overflow-x:hidden; }
-
-    /* Canvas background */
-    #bg-canvas {
-      position: fixed;
-      top:0; left:0;
-      width:100%; height:100%;
-      z-index:1;
-      background: linear-gradient(to bottom, #87ceeb, #f0f8ff);
-    }
-
-    /* Hero full-screen section */
-    .hero-container {
-      position: relative;
-      width: 100%;
-      height: 100vh;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      text-align: center;
-      overflow: hidden;
-      color: #fff;
-      z-index:2;
-    }
-
-    /* Avatar */
-    .avatar-container { position: relative; z-index:2; }
-    #avatar {
-      width: 180px;
-      height: auto;
-      border-radius: 50%;
-      animation: float 3s ease-in-out infinite;
-    }
-    @keyframes float {
-      0%,100% { transform: translateY(0px); }
-      50% { transform: translateY(-10px); }
-    }
-
-    /* Eyes */
-    .eyes { position: absolute; top:50px; left:50%; transform: translateX(-50%); display:flex; gap:30px; }
-    .eye { width:15px; height:15px; background:black; border-radius:50%; transition: all 0.1s; }
-
-    /* Hero Text */
-    h1 { font-size: 2rem; margin-top:20px; }
-    p { font-size: 1.2rem; margin-top:10px; }
-
-    /* Floating clouds */
-    .clouds {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 20px;
-      margin-top:30px;
-      position: relative;
-      z-index:2;
-    }
-    .cloud {
-      background: #fff;
-      color:#333;
-      padding: 12px 25px;
-      border-radius:50px;
-      font-weight:bold;
-      cursor:pointer;
-      box-shadow: 2px 4px 10px rgba(0,0,0,0.2);
-      transition: transform 0.3s, background 0.3s;
-    }
-    .cloud:hover { transform: translateY(-10px) scale(1.1); background:#f0f0f0; }
-
-    /* Footer */
-    footer { position: absolute; bottom:10px; width:100%; text-align:center; color:#fff; z-index:2; font-size:0.9rem; }
-  </style>
+  <link rel="stylesheet" href="assets/css/style.css">
 </head>
 <body>
-  <!-- Background Canvas -->
+  <!-- Canvas Background -->
   <canvas id="bg-canvas"></canvas>
 
   <!-- Hero Section -->
   <div class="hero-container">
+    <!-- Avatar with small floating clouds -->
     <div class="avatar-container">
       <img src="assets/images/avatar.png" alt="Muhammad Areeb Rizwan" id="avatar">
-      <!-- Optional eyes if you want animated pupil -->
-      <!--
-      <div class="eyes">
-        <div class="eye" id="eye-left"></div>
-        <div class="eye" id="eye-right"></div>
-      </div>
-      -->
+      <div class="avatar-cloud" style="top:-20px; left:50px;"></div>
+      <div class="avatar-cloud" style="top:10px; right:60px;"></div>
     </div>
 
+    <!-- Hero Text -->
     <h1>Assalamu Alaikum, I’m Muhammad Areeb Rizwan</h1>
     <p>Mechanical Engineer | Entrepreneur | Researcher | Aspiring Global Leader</p>
 
+    <!-- Navigation Clouds -->
     <div class="clouds">
       <div class="cloud" data-target="projects.html">Projects</div>
       <div class="cloud" data-target="experiences.html">Experience</div>
@@ -113,56 +37,6 @@
     &copy; 2025 Muhammad Areeb Rizwan
   </footer>
 
-  <script>
-    // Canvas floating clouds
-    const canvas = document.getElementById('bg-canvas');
-    const ctx = canvas.getContext('2d');
-    canvas.width = window.innerWidth;
-    canvas.height = window.innerHeight;
-
-    class Cloud {
-      constructor() {
-        this.x = Math.random() * canvas.width;
-        this.y = Math.random() * canvas.height / 2;
-        this.size = 50 + Math.random() * 50;
-        this.speed = 0.2 + Math.random() * 0.5;
-      }
-      draw() {
-        ctx.fillStyle = 'rgba(255,255,255,0.8)';
-        ctx.beginPath();
-        ctx.ellipse(this.x, this.y, this.size, this.size/2, 0, 0, Math.PI*2);
-        ctx.fill();
-      }
-      update() {
-        this.x += this.speed;
-        if(this.x - this.size > canvas.width) this.x = -this.size;
-        this.draw();
-      }
-    }
-
-    const cloudArr = [];
-    for(let i=0;i<15;i++) cloudArr.push(new Cloud());
-
-    function animate() {
-      ctx.clearRect(0,0,canvas.width,canvas.height);
-      cloudArr.forEach(c => c.update());
-      requestAnimationFrame(animate);
-    }
-    animate();
-
-    window.addEventListener('resize', () => {
-      canvas.width = window.innerWidth;
-      canvas.height = window.innerHeight;
-    });
-
-    // Cloud clicks navigate to pages
-    const clouds = document.querySelectorAll('.cloud');
-    clouds.forEach(cloud => {
-      cloud.addEventListener('click', () => {
-        const target = cloud.dataset.target;
-        window.location.href = target;
-      });
-    });
-  </script>
+  <script src="assets/js/main.js"></script>
 </body>
 </html>
