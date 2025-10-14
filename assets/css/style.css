@@ -11,7 +11,6 @@ html, body { width:100%; height:100%; font-family: 'Poppins', sans-serif; overfl
   top:0; left:0;
   width:100%; height:100%;
   z-index:1;
-  /* Darker blue for a more dramatic, high-altitude feel */
   background: linear-gradient(to bottom, #1e3a8a, #3b82f6, #93c5fd); 
 }
 
@@ -28,52 +27,44 @@ html, body { width:100%; height:100%; font-family: 'Poppins', sans-serif; overfl
   overflow: hidden;
   color: #fff;
   z-index:2;
-  /* Slight perspective for a 3D feel */
   perspective: 1000px; 
 }
 
-/* Avatar Container FIX: Removed background and padding to eliminate the large white oval */
+/* 1. Avatar Container FIX: Completely removed circular styling and padding/background. */
 .avatar-container { 
   position: relative; 
   z-index:3;
-  padding: 0; 
-  border-radius: 50%;
-  background: none; 
-}
-
-/* Avatar FIX: Adjusted shadows for blending and removed hard borders */
-#avatar {
-  /* Ensure it fits the circular space */
-  width: 180px;
-  height: 180px; 
-  object-fit: cover;
-  border-radius: 50%;
-  animation: float 3s ease-in-out infinite;
+  padding: 0; /* REMOVED PADDING */
+  border-radius: 0; /* REMOVED CIRCULAR STYLE */
+  background: none; /* REMOVED BACKGROUND */
   
-  /* Enhanced shadow/glow for a floating, blended look */
-  box-shadow: 0 0 30px 10px rgba(255, 255, 255, 0.8), /* Ethereal white glow for blending */
-              0 15px 40px rgba(0, 0, 0, 0.4); /* Soft shadow for depth */
-              
-  border: none; /* Removed hard border */
-}
-@keyframes float {
-  0%,100% { transform: translateY(0px) rotateX(0deg); }
-  50% { transform: translateY(-8px) rotateX(2deg); } /* Subtle float and tilt */
+  /* Added simple floating animation to the container */
+  animation: simpleFloat 3s ease-in-out infinite;
+  
+  /* Constant, large light source behind the image for atmosphere */
+  box-shadow: 0 0 100px 30px rgba(255, 255, 255, 0.5); 
 }
 
-/* Small clouds around avatar (Ethereal and subtle) */
-.avatar-cloud {
-  width: 50px; 
-  height: 25px;
-  background: rgba(255,255,255,0.6);
-  border-radius: 50px;
-  position: absolute;
-  animation: floatCloud 8s linear infinite alternate; 
-  filter: blur(2px); /* Ethereal blur effect */
+/* 2. Avatar Image FIX: Remove border-radius and use filter: drop-shadow */
+#avatar {
+  width: 180px;
+  height: auto; 
+  object-fit: contain; 
+  
+  /* CRITICAL: REMOVED border-radius, border, and box-shadow to allow blending */
+  border-radius: 0; 
+  border: none;
+  box-shadow: none;
+  animation: none;
+  
+  /* NEW GLOW: drop-shadow follows the shape of the head/shoulders for seamless blending */
+  filter: drop-shadow(0 0 40px rgba(255, 255, 255, 0.9)) /* Soft white light source */
+          drop-shadow(0 15px 40px rgba(0, 0, 0, 0.5)); /* Deep shadow for 3D depth */
 }
-@keyframes floatCloud {
-  0% { transform: translateY(0px) translateX(0px); opacity: 0.8; }
-  100% { transform: translateY(-15px) translateX(15px); opacity: 0.6; }
+
+@keyframes simpleFloat {
+  0%,100% { transform: translateY(0px); }
+  50% { transform: translateY(-8px); } /* Subtle float */
 }
 
 /* Hero Text */
@@ -81,7 +72,7 @@ h1 {
     font-family: 'Poppins', sans-serif;
     font-size: 3rem; 
     margin-top:20px; 
-    color:#fff; /* White text for contrast */
+    color:#fff; 
     text-shadow: 1px 1px 5px rgba(0,0,0,0.4);
 }
 p { 
@@ -111,7 +102,7 @@ p {
   cursor:pointer;
   box-shadow: 0 8px 15px rgba(0,0,0,0.25);
   transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94), box-shadow 0.4s;
-  transform: rotateZ(-1deg); /* Subtle initial tilt */
+  transform: rotateZ(-1deg); 
 }
 .cloud:hover { 
     transform: translateY(-15px) scale(1.15) rotateZ(0deg); 
