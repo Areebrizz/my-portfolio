@@ -215,6 +215,26 @@
             opacity: 1;
             visibility: visible;
         }
+
+        /* Custom animations for particles */
+        @keyframes float {
+            0%, 100% {
+                transform: translate(0, 0);
+                opacity: 0.3;
+            }
+            25% {
+                transform: translate(10px, -10px);
+                opacity: 0.6;
+            }
+            50% {
+                transform: translate(-5px, 15px);
+                opacity: 0.8;
+            }
+            75% {
+                transform: translate(15px, 5px);
+                opacity: 0.6;
+            }
+        }
     </style>
 </head>
 <body class="selection:bg-cyan-700 selection:text-white">
@@ -283,8 +303,9 @@
                     <p class="text-electric-blue text-sm font-extrabold uppercase tracking-widest mb-3">
                         <span class="text-neon">MECHANICAL SYSTEMS</span> & AI INTEGRATION FOCUSED
                     </p>
+                    <!-- FIXED: Full name displayed correctly -->
                     <h1 class="text-6xl lg:text-8xl font-black mb-4 leading-none text-white text-neon">
-                        Muhammad <span class="text-electric-blue">Rizwan</span>
+                        Muhammad <span class="text-electric-blue">Areeb Rizwan</span>
                     </h1>
                     <p class="text-2xl font-light text-slate-400 mb-6">
                         Mechanical Engineer | Technical Lead | AI/R&D Strategist
@@ -410,9 +431,9 @@
                             <h3 class="text-3xl font-bold mt-2 text-white">The AeroTechLAB</h3>
                             <p class="text-lg text-slate-400 mb-4">Entrepreneurial Venture (RC Planes & Drones)</p>
                             <ul class="list-disc list-outside space-y-2 text-slate-400 ml-5 text-base">
-                                <li>**Founded and led** the startup, specializing in state-of-the-art RC planes and drones, overseeing technical design and prototyping.</li>
-                                <li>Organized and conducted multiple **STEM workshops**, driving youth engagement in aerospace and robotics education.</li>
-                                <li>Received **countless awards and recognitions** from top schools and institutions for educational impact.</li>
+                                <li><strong>Founded and led</strong> the startup, specializing in state-of-the-art RC planes and drones, overseeing technical design and prototyping.</li>
+                                <li>Organized and conducted multiple <strong>STEM workshops</strong>, driving youth engagement in aerospace and robotics education.</li>
+                                <li>Received <strong>countless awards and recognitions</strong> from top schools and institutions for educational impact.</li>
                             </ul>
                         </div>
                     </div>
@@ -428,9 +449,9 @@
                             <h3 class="text-3xl font-bold mt-2 text-white">Trainee Engineer - Production</h3>
                             <p class="text-lg text-slate-400 mb-4">Industrial Manufacturing (PQ KHI Plant)</p>
                             <ul class="list-disc list-outside space-y-2 text-slate-400 ml-5 text-base">
-                                <li>Implemented an **AI Car Defect Detection** system using YOLOv8 to identify surface flaws, enhancing quality control efficiency.</li>
-                                <li>Developed a **Vehicle Component Failure Analyzer** (Random Forest model) to predict component failure and enable proactive QC.</li>
-                                <li>Contributed to **Bus Assembly Plant Process Documentation** and a **CO2 Detection Project** for plant safety.</li>
+                                <li>Implemented an <strong>AI Car Defect Detection</strong> system using YOLOv8 to identify surface flaws, enhancing quality control efficiency.</li>
+                                <li>Developed a <strong>Vehicle Component Failure Analyzer</strong> (Random Forest model) to predict component failure and enable proactive QC.</li>
+                                <li>Contributed to <strong>Bus Assembly Plant Process Documentation</strong> and a <strong>CO2 Detection Project</strong> for plant safety.</li>
                             </ul>
                         </div>
                     </div>
@@ -464,7 +485,7 @@
                             <h3 class="text-3xl font-bold mt-2 text-white">Management Trainee Officer - Maintenance</h3>
                             <p class="text-lg text-slate-400 mb-4">Textile Machinery & Infrastructure</p>
                             <ul class="list-disc list-outside space-y-2 text-slate-400 ml-5 text-base">
-                                <li>Developed the **Automated Inventory System**, a comprehensive parts list and real-time monitoring dashboard, adopted industry-wide.</li>
+                                <li>Developed the <strong>Automated Inventory System</strong>, a comprehensive parts list and real-time monitoring dashboard, adopted industry-wide.</li>
                                 <li>This system ensured faster decision-making and proactive maintenance scheduling, minimizing downtime.</li>
                                 <li>Oversaw routine and predictive maintenance schedules for critical textile machinery.</li>
                             </ul>
@@ -496,7 +517,7 @@
                     <div class="project-card scroll-fade bg-gray-900/70 p-6 rounded-xl border border-electric-blue/30 shadow-neon-dark hover:shadow-neon transition duration-500" data-delay="100">
                         <h3 class="text-2xl font-bold text-electric-blue text-neon mb-2">Predictive Failure Analyzer</h3>
                         <p class="text-slate-400 mb-4">Machine Learning | Predictive Maintenance</p>
-                        <p class="text-slate-500 mb-4 text-sm">Developed and trained a **Random Forest AI model** to predict car component defects based on operational parameters, significantly reducing failure rates in manufacturing.</p>
+                        <p class="text-slate-500 mb-4 text-sm">Developed and trained a <strong>Random Forest AI model</strong> to predict car component defects based on operational parameters, significantly reducing failure rates in manufacturing.</p>
                         <p class="text-xs font-mono text-cyan-400 mt-2">Built with: Python, Random Forest, Streamlit</p>
                     </div>
                     
@@ -504,7 +525,7 @@
                     <div class="project-card scroll-fade bg-gray-900/70 p-6 rounded-xl border border-electric-blue/30 shadow-neon-dark hover:shadow-neon transition duration-500" data-delay="200">
                         <h3 class="text-2xl font-bold text-electric-blue text-neon mb-2">Advanced De-Dusting Plant Design</h3>
                         <p class="text-slate-400 mb-4">CFD Simulation | Design Automation | Capstone</p>
-                        <p class="text-slate-500 mb-4 text-sm">Final Year Project on design automation and feasibility analysis for a system extracting $150,000 \, \text{cfm}$ dust/fume flow from an electric arc furnace. Awarded the **highest capstone score**.</p>
+                        <p class="text-slate-500 mb-4 text-sm">Final Year Project on design automation and feasibility analysis for a system extracting 150,000 cfm dust/fume flow from an electric arc furnace. Awarded the <strong>highest capstone score</strong>.</p>
                         <p class="text-xs font-mono text-cyan-400 mt-2">Collaboration: People Steel Mills</p>
                     </div>
 
@@ -653,30 +674,6 @@
                 container.appendChild(particle);
             }
         }
-        
-        // Add CSS for particle animation
-        const style = document.createElement('style');
-        style.textContent = `
-            @keyframes float {
-                0%, 100% {
-                    transform: translate(0, 0);
-                    opacity: 0.3;
-                }
-                25% {
-                    transform: translate(10px, -10px);
-                    opacity: 0.6;
-                }
-                50% {
-                    transform: translate(-5px, 15px);
-                    opacity: 0.8;
-                }
-                75% {
-                    transform: translate(15px, 5px);
-                    opacity: 0.6;
-                }
-            }
-        `;
-        document.head.appendChild(style);
         
         // Simple Intersection Observer for scroll-fade animations
         const faders = document.querySelectorAll('.scroll-fade');
