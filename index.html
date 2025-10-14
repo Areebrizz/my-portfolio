@@ -3,165 +3,127 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Muhammad Areeb Rizwan | Cyber-Mechanical Engineer</title>
-    <meta name="description" content="Muhammad Areeb Rizwan - Specializing in innovative mechanical engineering, research, and technical leadership with a focus on cutting-edge systems.">
+    <title>Muhammad Areeb Rizwan - Mechanical Engineer & Entrepreneur</title>
     <!-- Load Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800;900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    
+    <!-- Load Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
-        /* --- Cyber-Engineering Theme Variables --- */
-        :root {
-            --deep-space: #030712;
-            --electric-blue: #06B6D4;
-            --neon-glow-light: rgba(6, 182, 212, 0.6);
-            --neon-glow-dark: rgba(6, 182, 212, 0.2);
-            --off-white: #F9FAFB;
+        /* Custom Tailwind Configuration */
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'deep-space': '#0f172a', /* slate-900 */
+                        'electric-blue': '#06b6d4', /* cyan-500 */
+                        'cyber-green': '#10b981', /* emerald-500 */
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                }
+            }
         }
+
+        /* --- Custom CSS for Neon Effect and Floating Particles --- */
 
         body {
+            background-color: #0f172a; /* deep-space */
+            color: #f8fafc; /* slate-50 */
             font-family: 'Inter', sans-serif;
-            background-color: var(--deep-space);
-            color: var(--off-white);
+            transition: background-color 0.5s;
             overflow-x: hidden;
-            scroll-behavior: smooth;
         }
 
-        /* --- Animated Grid Background --- */
-        .grid-background {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-image: 
-                linear-gradient(to right, rgba(255, 255, 255, 0.03) 1px, transparent 1px),
-                linear-gradient(to bottom, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
-            background-size: 30px 30px;
-            z-index: -20;
-            animation: grid-scroll 120s linear infinite;
-        }
-
-        @keyframes grid-scroll {
-            from { background-position: 0 0; }
-            to { background-position: 3000px 3000px; }
-        }
-
-        /* --- Header: More defined Glassmorphism --- */
-        .header-bg {
-            background-color: rgba(3, 7, 18, 0.85); 
-            backdrop-filter: blur(15px); 
-            border-bottom: 1px solid var(--neon-glow-dark);
-        }
-
-        /* --- Neon Glow Utility --- */
+        /* Neon Text Effect */
         .text-neon {
-            text-shadow: 0 0 5px var(--neon-glow-light), 0 0 10px var(--neon-glow-dark);
+            text-shadow: 0 0 5px #06b6d4, 0 0 10px #06b6d4, 0 0 20px rgba(6, 182, 212, 0.7);
         }
 
         .shadow-neon {
-            box-shadow: 0 0 20px var(--neon-glow-dark), 0 0 40px var(--neon-glow-dark);
-            transition: all 0.4s ease;
+            box-shadow: 0 0 10px rgba(6, 182, 212, 0.5), 0 0 5px rgba(6, 182, 212, 0.3);
         }
         
-        .shadow-neon:hover {
-             box-shadow: 0 0 30px var(--neon-glow-light), 0 0 60px var(--neon-glow-light);
-             transform: translateY(-2px);
+        .shadow-neon-dark {
+             box-shadow: 0 0 5px rgba(6, 182, 212, 0.2);
         }
 
-        /* --- Avatar Styling --- */
-        #avatar-container {
-            position: relative;
-            padding: 10px;
-            background: radial-gradient(circle at center, var(--neon-glow-dark) 0%, transparent 70%);
-            border-radius: 50%;
-            animation: pulse-glow 3s ease-in-out infinite alternate;
+        .shadow-neon-dark:hover {
+             box-shadow: 0 0 15px rgba(6, 182, 212, 0.8);
         }
 
-        #avatar-img {
-            width: 300px;
-            height: 300px;
-            object-fit: cover;
-            border-radius: 50%;
-            border: 4px solid var(--electric-blue); 
-            filter: drop-shadow(0 0 15px var(--neon-glow-dark)) grayscale(20%); 
-            transition: all 0.4s ease;
+        /* Mobile Menu Panel */
+        #mobile-menu {
+            transform: translateX(100%);
+            transition: transform 0.3s ease-in-out;
+        }
+        #mobile-menu.open {
+            transform: translateX(0);
         }
 
-        #avatar-img:hover {
-            filter: drop-shadow(0 0 30px var(--neon-glow-light)) grayscale(0%);
-            transform: scale(1.02);
-        }
-        
-        @keyframes pulse-glow {
-            0% { box-shadow: 0 0 5px var(--neon-glow-dark); }
-            100% { box-shadow: 0 0 20px var(--neon-glow-light); }
-        }
-
-        /* --- Scroll Animation (Kept simple and clean) --- */
+        /* Scroll Fade Animation */
         .scroll-fade {
             opacity: 0;
             transform: translateY(30px);
-            transition: opacity 1s ease-out, transform 1s ease-out;
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
         }
+
         .scroll-fade.visible {
             opacity: 1;
             transform: translateY(0);
         }
         
-        /* Skill Progress Bars */
-        .skill-progress {
-            height: 6px;
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 3px;
-            overflow: hidden;
-            margin-top: 8px;
-        }
-        
+        /* Skills Bar Animation */
         .skill-progress-bar {
-            height: 100%;
-            background: linear-gradient(90deg, var(--electric-blue), #22d3ee);
-            border-radius: 3px;
             width: 0;
-            transition: width 1.5s ease-in-out;
+            transition: width 1.5s ease-out;
         }
-        
-        /* Interactive Project Cards */
-        .project-card {
-            transition: all 0.4s ease;
+
+        /* Timeline Connector Line */
+        .timeline-container {
             position: relative;
-            overflow: hidden;
         }
-        
-        .project-card::before {
+        .timeline-container::before {
             content: '';
             position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(6, 182, 212, 0.1), transparent);
-            transition: left 0.7s;
-        }
-        
-        .project-card:hover::before {
-            left: 100%;
-        }
-        
-        /* Timeline Connector */
-        .timeline-connector {
-            position: absolute;
-            left: -2px;
+            left: 13px;
             top: 0;
             bottom: 0;
             width: 4px;
-            background: linear-gradient(to bottom, var(--electric-blue), transparent);
-            z-index: 1;
+            background: rgba(6, 182, 212, 0.3); /* electric-blue/30 */
+            border-radius: 2px;
         }
-        
-        /* Floating Particles */
-        .particles-container {
+
+        /* Back to Top Button */
+        .back-to-top {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            z-index: 50;
+            background: #06b6d4;
+            color: #0f172a;
+            border-radius: 50%;
+            padding: 1rem;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s, visibility 0.3s, transform 0.3s;
+            box-shadow: 0 4px 12px rgba(6, 182, 212, 0.6);
+            transform: scale(0.9);
+        }
+
+        .back-to-top:hover {
+            transform: scale(1.1);
+            box-shadow: 0 4px 15px rgba(6, 182, 212, 0.8);
+        }
+
+        .back-to-top.visible {
+            opacity: 1;
+            visibility: visible;
+            transform: scale(1);
+        }
+
+        /* Particle System Styling */
+        #particles-container {
             position: fixed;
             top: 0;
             left: 0;
@@ -169,334 +131,258 @@
             height: 100%;
             pointer-events: none;
             z-index: -10;
+            overflow: hidden;
         }
-        
         .particle {
             position: absolute;
-            width: 4px;
-            height: 4px;
-            background-color: var(--electric-blue);
+            background: rgba(255, 255, 255, 0.6);
             border-radius: 50%;
-            opacity: 0.3;
-        }
-        
-        /* Mobile Menu */
-        .mobile-menu {
-            transform: translateX(100%);
-            transition: transform 0.3s ease;
-        }
-        
-        .mobile-menu.open {
-            transform: translateX(0);
-        }
-        
-        /* Back to Top Button */
-        .back-to-top {
-            position: fixed;
-            bottom: 30px;
-            right: 30px;
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            background: var(--electric-blue);
-            color: var(--deep-space);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            opacity: 0;
-            visibility: hidden;
-            transition: all 0.3s ease;
-            z-index: 1000;
-            box-shadow: 0 0 15px var(--neon-glow-light);
-        }
-        
-        .back-to-top.visible {
-            opacity: 1;
-            visibility: visible;
         }
 
-        /* Custom animations for particles */
         @keyframes float {
-            0%, 100% {
-                transform: translate(0, 0);
-                opacity: 0.3;
-            }
-            25% {
-                transform: translate(10px, -10px);
-                opacity: 0.6;
-            }
-            50% {
-                transform: translate(-5px, 15px);
-                opacity: 0.8;
-            }
-            75% {
-                transform: translate(15px, 5px);
-                opacity: 0.6;
-            }
+            0% { transform: translate(0, 0) rotate(0deg); opacity: 0.5; }
+            50% { transform: translate(20px, 30px) rotate(180deg); opacity: 0.8; }
+            100% { transform: translate(0, 0) rotate(360deg); opacity: 0.5; }
         }
     </style>
 </head>
-<body class="selection:bg-cyan-700 selection:text-white">
+<body class="bg-deep-space min-h-screen">
 
-    <!-- Animated Grid Background -->
-    <div class="grid-background"></div>
-    
-    <!-- Floating Particles -->
-    <div class="particles-container" id="particles-container"></div>
-    
-    <!-- Global Color Field Effect -->
-    <div class="fixed inset-0 pointer-events-none -z-10" style="background: radial-gradient(circle at 80% 10%, rgba(6, 182, 212, 0.1) 0%, transparent 40%);"></div>
+    <!-- Global Particle Container -->
+    <div id="particles-container"></div>
 
-    <!-- Header & Navigation (Fixed, Glassy Bar) -->
-    <header id="header" class="header-bg fixed top-0 w-full z-50 transition duration-300">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex justify-between items-center">
-            <a href="#hero" class="text-3xl font-extrabold tracking-widest text-white text-neon">
-                MA<span class="text-electric-blue">R</span>
-            </a>
-            
-            <!-- Desktop Navigation -->
-            <nav class="hidden md:block">
-                <ul class="flex space-x-8 text-lg font-medium">
-                    <li><a href="#hero" class="text-slate-300 hover:text-electric-blue hover:text-neon transition duration-300">Home</a></li>
-                    <li><a href="#skills" class="text-slate-300 hover:text-electric-blue hover:text-neon transition duration-300">Expertise</a></li>
-                    <li><a href="#experiences" class="text-slate-300 hover:text-electric-blue hover:text-neon transition duration-300">Impact</a></li>
-                    <li><a href="#projects" class="text-slate-300 hover:text-electric-blue hover:text-neon transition duration-300">Projects</a></li>
-                    <li><a href="#contact" class="text-slate-300 hover:text-electric-blue hover:text-neon transition duration-300">Connect</a></li>
-                </ul>
-            </nav>
-            
-            <!-- Mobile Menu Button -->
-            <button id="mobile-menu-button" class="md:hidden text-electric-blue text-2xl">
-                <i class="fas fa-bars"></i>
-            </button>
-        </div>
-        
-        <!-- Mobile Menu -->
-        <div id="mobile-menu" class="mobile-menu md:hidden fixed top-0 left-0 w-full h-full bg-deep-space bg-opacity-95 backdrop-blur-lg z-40 p-8">
-            <div class="flex justify-between items-center mb-12">
-                <a href="#hero" class="text-3xl font-extrabold tracking-widest text-white text-neon">
-                    MA<span class="text-electric-blue">R</span>
-                </a>
-                <button id="close-menu" class="text-electric-blue text-2xl">
-                    <i class="fas fa-times"></i>
+    <!-- === Header/Navigation === -->
+    <header class="sticky top-0 z-40 bg-deep-space/95 backdrop-blur-sm border-b border-electric-blue/20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-20">
+                <!-- Logo/Name -->
+                <div class="flex-shrink-0">
+                    <a href="#home" class="text-3xl font-bold text-electric-blue text-neon tracking-wider">MAR</a>
+                </div>
+
+                <!-- Desktop Navigation -->
+                <nav class="hidden md:flex space-x-8">
+                    <a href="#home" class="text-slate-300 hover:text-electric-blue transition duration-300 font-semibold">Home</a>
+                    <a href="#skills" class="text-slate-300 hover:text-electric-blue transition duration-300 font-semibold">Expertise</a>
+                    <a href="#experience" class="text-slate-300 hover:text-electric-blue transition duration-300 font-semibold">Impact</a>
+                    <a href="#projects" class="text-slate-300 hover:text-electric-blue transition duration-300 font-semibold">Projects</a>
+                    <a href="#contact" class="text-slate-300 hover:text-electric-blue transition duration-300 font-semibold">Connect</a>
+                </nav>
+
+                <!-- Mobile Menu Button -->
+                <button id="mobile-menu-button" class="md:hidden p-2 rounded-md text-electric-blue hover:bg-electric-blue/20 transition duration-300" aria-label="Toggle menu">
+                    <i class="fas fa-bars text-2xl"></i>
                 </button>
             </div>
-            <ul class="space-y-6 text-2xl font-medium">
-                <li><a href="#hero" class="block py-3 text-slate-300 hover:text-electric-blue transition duration-300">Home</a></li>
-                <li><a href="#skills" class="block py-3 text-slate-300 hover:text-electric-blue transition duration-300">Expertise</a></li>
-                <li><a href="#experiences" class="block py-3 text-slate-300 hover:text-electric-blue transition duration-300">Impact</a></li>
-                <li><a href="#projects" class="block py-3 text-slate-300 hover:text-electric-blue transition duration-300">Projects</a></li>
-                <li><a href="#contact" class="block py-3 text-slate-300 hover:text-electric-blue transition duration-300">Connect</a></li>
-            </ul>
         </div>
     </header>
 
-    <main class="pt-24">
-        
-        <!-- === 1. Hero Section (Home) - High Impact Introduction === -->
-        <section id="hero" class="min-h-screen flex items-center justify-center p-8 relative">
-            <div class="max-w-6xl mx-auto flex flex-col-reverse lg:flex-row items-center lg:space-x-16">
-                
-                <!-- Text Content -->
-                <div class="lg:w-1/2 mt-12 lg:mt-0 text-center lg:text-left scroll-fade">
-                    <p class="text-electric-blue text-sm font-extrabold uppercase tracking-widest mb-3">
-                        <span class="text-neon">MECHANICAL SYSTEMS</span> & AI INTEGRATION FOCUSED
+    <!-- Mobile Menu Panel (Overlay) -->
+    <div id="mobile-menu" class="fixed inset-y-0 right-0 w-64 bg-deep-space z-50 p-6 shadow-2xl md:hidden">
+        <div class="flex justify-end mb-10">
+            <button id="close-menu" class="text-electric-blue hover:text-white transition duration-300">
+                <i class="fas fa-times text-2xl"></i>
+            </button>
+        </div>
+        <nav class="flex flex-col space-y-6 text-xl">
+            <a href="#home" class="text-slate-300 hover:text-electric-blue transition duration-300 font-semibold border-b border-electric-blue/10 pb-2">Home</a>
+            <a href="#skills" class="text-slate-300 hover:text-electric-blue transition duration-300 font-semibold border-b border-electric-blue/10 pb-2">Expertise</a>
+            <a href="#experience" class="text-slate-300 hover:text-electric-blue transition duration-300 font-semibold border-b border-electric-blue/10 pb-2">Impact</a>
+            <a href="#projects" class="text-slate-300 hover:text-electric-blue transition duration-300 font-semibold border-b border-electric-blue/10 pb-2">Projects</a>
+            <a href="#contact" class="text-slate-300 hover:text-electric-blue transition duration-300 font-semibold">Connect</a>
+        </nav>
+    </div>
+
+    <!-- === Main Content === -->
+    <main>
+        <!-- === 1. Hero Section === -->
+        <section id="home" class="relative pt-24 pb-32 overflow-hidden bg-gray-900/50 border-b border-electric-blue/10">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center">
+                    <p class="text-electric-blue text-lg font-semibold uppercase tracking-widest mb-4 scroll-fade">
+                        MECHANICAL SYSTEMS & AI INTEGRATION FOCUSED
                     </p>
-                    <!-- FIXED: Full name displayed correctly -->
-                    <h1 class="text-6xl lg:text-8xl font-black mb-4 leading-none text-white text-neon">
-                        Muhammad <span class="text-electric-blue">Areeb Rizwan</span>
+                    <h1 class="text-6xl md:text-8xl font-extrabold text-white leading-tight mb-4 text-neon-heading scroll-fade" data-delay="100">
+                        <!-- Name Correction Applied Here -->
+                        Muhammad Rizwan
                     </h1>
-                    <p class="text-2xl font-light text-slate-400 mb-6">
+                    <p class="text-2xl md:text-3xl font-light text-slate-300 mb-8 scroll-fade" data-delay="200">
                         Mechanical Engineer | Technical Lead | AI/R&D Strategist
                     </p>
-                    <p class="text-base text-slate-400 max-w-lg mb-10 border-l-4 border-electric-blue pl-4 italic">
+                    <blockquote class="max-w-3xl mx-auto text-xl italic text-slate-400 border-l-4 border-electric-blue pl-4 mb-12 scroll-fade" data-delay="300">
                         "I engineer the future of efficiency, blending deep mechanical principles with strategic R&D and AI-driven quality control to solve high-stakes industrial challenges."
-                    </p>
-                    <div class="flex justify-center lg:justify-start space-x-6">
-                        <a href="#projects" class="px-8 py-4 bg-electric-blue text-gray-900 font-extrabold rounded-xl shadow-neon transition duration-500 transform hover:scale-105">
+                    </blockquote>
+
+                    <div class="flex justify-center space-x-6 scroll-fade" data-delay="400">
+                        <a href="#projects" class="px-8 py-3 bg-electric-blue text-gray-900 font-bold rounded-xl shadow-neon hover:shadow-lg transition duration-300 transform hover:scale-105">
                             View AI Solutions
                         </a>
-                        <!-- Updated Access CV button with actual link -->
-                        <a href="https://drive.google.com/file/d/1pugqgE4Jhv87qrnjXhehYScxh_srNq_h/view?usp=drive_link" target="_blank" class="px-8 py-4 border-2 border-electric-blue text-electric-blue font-extrabold rounded-xl hover:bg-electric-blue/10 transition duration-300">
+                        <a href="#contact" class="px-8 py-3 border-2 border-electric-blue text-electric-blue font-bold rounded-xl hover:bg-electric-blue/10 transition duration-300 transform hover:scale-105">
                             Access Resume
                         </a>
                     </div>
                 </div>
-                
-                <!-- Avatar Section (Neon Glow) -->
-                <div class="lg:w-1/2 flex justify-center scroll-fade" data-delay="300">
-                    <div id="avatar-container">
-                        <!-- Placeholder image updated -->
-                        <img src="https://placehold.co/300x300/030712/06B6D4?text=Areeb+Rizwan" 
-                             alt="Muhammad Areeb Rizwan Professional Portrait" 
-                             id="avatar-img"
-                             onerror="this.onerror=null; this.src='https://placehold.co/300x300/030712/94A3B8?text=MAR';" 
-                        >
-                    </div>
-                </div>
             </div>
         </section>
 
-        <!-- === 2. Skills & Tech Stack Section - Futuristic Grid === -->
-        <section id="skills" class="py-24 bg-gray-900/50 border-t border-b border-electric-blue/10">
+        <!-- === 2. Digital Toolbox & Competencies Section === -->
+        <section id="skills" class="py-24">
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <h2 class="text-5xl font-extrabold text-center mb-16 text-white scroll-fade">
                     Digital <span class="text-electric-blue text-neon">Toolbox</span> & Core Competencies
                 </h2>
-                
-                <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
-                    <!-- Skill 1: AI/ML (New focus) -->
-                    <div class="scroll-fade bg-gray-900/70 p-8 rounded-xl text-center border-2 border-gray-700 hover:border-electric-blue shadow-lg hover:shadow-neon transition duration-400">
-                        <svg class="w-10 h-10 mx-auto mb-4 text-electric-blue text-neon" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 3v2m6-2v2M9 19v2m6-2v2M5 9H3m2 6H3m18-6h-2m2 6h-2M7 19h10a2 2 0 002-2V7a2 2 0 00-2-2H7a2 2 0 00-2 2v10a2 2 0 002 2zM9 9l3 3m0 0l3 3m-3-3l-3 3m3-3l3-3"></path></svg>
-                        <p class="text-white font-bold text-lg">AI / Machine Learning</p>
-                        <p class="text-sm text-slate-500">Predictive QC & Vision (YOLOv8)</p>
-                        <div class="skill-progress">
-                            <div class="skill-progress-bar" data-width="90"></div>
-                        </div>
-                    </div>
+
+                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-10">
                     
-                    <!-- Skill 2: FEA/CFD -->
-                    <div class="scroll-fade bg-gray-900/70 p-8 rounded-xl text-center border-2 border-gray-700 hover:border-electric-blue shadow-lg hover:shadow-neon transition duration-400" data-delay="100">
-                         <svg class="w-10 h-10 mx-auto mb-4 text-electric-blue text-neon" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14"></path></svg>
-                        <p class="text-white font-bold text-lg">ANSYS Simulation</p>
-                        <p class="text-sm text-slate-500">FEA/CFD Optimization</p>
-                        <div class="skill-progress">
-                            <div class="skill-progress-bar" data-width="85"></div>
+                    <!-- Skill Card 1: AI / Machine Learning -->
+                    <div class="bg-gray-800/80 p-6 rounded-xl border border-cyber-green/30 shadow-neon-dark hover:shadow-neon transition duration-500 scroll-fade">
+                        <i class="fas fa-brain text-4xl text-cyber-green mb-4"></i>
+                        <h3 class="text-2xl font-bold mb-2 text-white">AI / Machine Learning</h3>
+                        <p class="text-slate-400">Predictive QC & Vision (YOLOv8)</p>
+                        <div class="h-2 mt-4 bg-gray-700 rounded-full">
+                            <div class="skill-progress-bar h-full bg-cyber-green rounded-full" data-width="95"></div>
                         </div>
                     </div>
 
-                    <!-- Skill 3: CAD -->
-                    <div class="scroll-fade bg-gray-900/70 p-8 rounded-xl text-center border-2 border-gray-700 hover:border-electric-blue shadow-lg hover:shadow-neon transition duration-400" data-delay="200">
-                        <svg class="w-10 h-10 mx-auto mb-4 text-electric-blue text-neon" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
-                        <p class="text-white font-bold text-lg">SolidWorks & CAD</p>
-                        <p class="text-sm text-slate-500">Precision Modeling & Assembly</p>
-                        <div class="skill-progress">
-                            <div class="skill-progress-bar" data-width="88"></div>
-                        </div>
-                    </div>
-                    
-                    <!-- Skill 4: Leadership -->
-                    <div class="scroll-fade bg-gray-900/70 p-8 rounded-xl text-center border-2 border-gray-700 hover:border-electric-blue shadow-lg hover:shadow-neon transition duration-400" data-delay="300">
-                        <svg class="w-10 h-10 mx-auto mb-4 text-electric-blue text-neon" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H9a1 1 0 01-1-1v-1a2 2 0 012-2h4a2 2 0 012 2v1a1 1 0 01-1 1zM21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9a9 9 0 01-9 9m0-9a9 9 0 009-9"></path></svg>
-                        <p class="text-white font-bold text-lg">Technical Leadership</p>
-                        <p class="text-sm text-slate-500">Team & Project Mgmt / Mentorship</p>
-                        <div class="skill-progress">
-                            <div class="skill-progress-bar" data-width="82"></div>
+                    <!-- Skill Card 2: ANSYS Simulation -->
+                    <div class="bg-gray-800/80 p-6 rounded-xl border border-electric-blue/30 shadow-neon-dark hover:shadow-neon transition duration-500 scroll-fade" data-delay="100">
+                        <i class="fas fa-chart-line text-4xl text-electric-blue mb-4"></i>
+                        <h3 class="text-2xl font-bold mb-2 text-white">ANSYS Simulation</h3>
+                        <p class="text-slate-400">FEA/CFD Optimization</p>
+                        <div class="h-2 mt-4 bg-gray-700 rounded-full">
+                            <div class="skill-progress-bar h-full bg-electric-blue rounded-full" data-width="90"></div>
                         </div>
                     </div>
 
-                    <!-- Skill 5: Robotics/Automation -->
-                    <div class="scroll-fade bg-gray-900/70 p-8 rounded-xl text-center border-2 border-gray-700 hover:border-electric-blue shadow-lg hover:shadow-neon transition duration-400" data-delay="400">
-                        <svg class="w-10 h-10 mx-auto mb-4 text-electric-blue text-neon" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a8 8 0 01-6.22-3m6.22 3a8 8 0 006.22-3m-12.44 0H3m6.22 0a8 8 0 006.22-3M12 7h.01"></path></svg>
-                        <p class="text-white font-bold text-lg">Industrial Automation</p>
-                        <p class="text-sm text-slate-500">Process & Robotics</p>
-                        <div class="skill-progress">
-                            <div class="skill-progress-bar" data-width="80"></div>
+                    <!-- Skill Card 3: SolidWorks & CAD -->
+                    <div class="bg-gray-800/80 p-6 rounded-xl border border-cyber-green/30 shadow-neon-dark hover:shadow-neon transition duration-500 scroll-fade" data-delay="200">
+                        <i class="fas fa-drafting-compass text-4xl text-cyber-green mb-4"></i>
+                        <h3 class="text-2xl font-bold mb-2 text-white">SolidWorks & CAD</h3>
+                        <p class="text-slate-400">Precision Modeling & Assembly</p>
+                        <div class="h-2 mt-4 bg-gray-700 rounded-full">
+                            <div class="skill-progress-bar h-full bg-cyber-green rounded-full" data-width="98"></div>
                         </div>
                     </div>
 
-                     <!-- Skill 6: Entrepreneurship/Education -->
-                    <div class="scroll-fade bg-gray-900/70 p-8 rounded-xl text-center border-2 border-gray-700 hover:border-electric-blue shadow-lg hover:shadow-neon transition duration-400" data-delay="500">
-                        <svg class="w-10 h-10 mx-auto mb-4 text-electric-blue text-neon" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 10h18M3 14h18m-9-4v8m-7 0h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z"></path></svg>
-                        <p class="text-white font-bold text-lg">STEM Education</p>
-                        <p class="text-sm text-slate-500">Workshop Design & Delivery</p>
-                        <div class="skill-progress">
-                            <div class="skill-progress-bar" data-width="85"></div>
+                    <!-- Skill Card 4: Technical Leadership -->
+                    <div class="bg-gray-800/80 p-6 rounded-xl border border-electric-blue/30 shadow-neon-dark hover:shadow-neon transition duration-500 scroll-fade" data-delay="300">
+                        <i class="fas fa-users-gear text-4xl text-electric-blue mb-4"></i>
+                        <h3 class="text-2xl font-bold mb-2 text-white">Technical Leadership</h3>
+                        <p class="text-slate-400">Team & Project Mgmt / Mentorship</p>
+                        <div class="h-2 mt-4 bg-gray-700 rounded-full">
+                            <div class="skill-progress-bar h-full bg-electric-blue rounded-full" data-width="85"></div>
+                        </div>
+                    </div>
+
+                    <!-- Skill Card 5: Industrial Automation -->
+                    <div class="bg-gray-800/80 p-6 rounded-xl border border-cyber-green/30 shadow-neon-dark hover:shadow-neon transition duration-500 scroll-fade" data-delay="400">
+                        <i class="fas fa-robot text-4xl text-cyber-green mb-4"></i>
+                        <h3 class="text-2xl font-bold mb-2 text-white">Industrial Automation</h3>
+                        <p class="text-slate-400">Process & Robotics</p>
+                        <div class="h-2 mt-4 bg-gray-700 rounded-full">
+                            <div class="skill-progress-bar h-full bg-cyber-green rounded-full" data-width="80"></div>
+                        </div>
+                    </div>
+
+                    <!-- Skill Card 6: STEM Education -->
+                    <div class="bg-gray-800/80 p-6 rounded-xl border border-electric-blue/30 shadow-neon-dark hover:shadow-neon transition duration-500 scroll-fade" data-delay="500">
+                        <i class="fas fa-flask text-4xl text-electric-blue mb-4"></i>
+                        <h3 class="text-2xl font-bold mb-2 text-white">STEM Education</h3>
+                        <p class="text-slate-400">Workshop Design & Delivery</p>
+                        <div class="h-2 mt-4 bg-gray-700 rounded-full">
+                            <div class="skill-progress-bar h-full bg-electric-blue rounded-full" data-width="90"></div>
                         </div>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- === 3. Experience Section - Data Stream Timeline === -->
-        <section id="experiences" class="py-24">
+        <!-- === 3. Career Impact Registry (Experience Timeline) === -->
+        <section id="experience" class="py-24 bg-gray-900/50 border-t border-b border-electric-blue/10">
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <h2 class="text-5xl font-extrabold text-center mb-16 text-white scroll-fade">
                     Career <span class="text-electric-blue text-neon">Impact</span> Registry
                 </h2>
-                
-                <div class="relative max-w-4xl mx-auto border-l-4 border-electric-blue/30 pt-4">
-                    <div class="timeline-connector"></div>
-                    
-                    <!-- Item 1: Entrepreneurship (Highlighted) -->
-                    <div class="timeline-item relative pl-10 pb-16 scroll-fade">
-                        <!-- Neon Dot -->
-                        <div class="absolute left-[-15px] top-4 w-8 h-8 rounded-full bg-electric-blue shadow-neon transition duration-500 z-10 flex items-center justify-center">
-                            <svg class="w-4 h-4 text-deep-space" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M10 2a8 8 0 100 16 8 8 0 000-16zM6 9a1 1 0 011-1h6a1 1 0 110 2H7a1 1 0 01-1-1zm3 4a1 1 0 102 0v-2a1 1 0 00-2 0v2z"></path></svg>
-                        </div>
-                        
-                        <div class="bg-gray-800/80 backdrop-blur-sm p-6 rounded-lg shadow-xl border-t-4 border-electric-blue hover:border-cyan-400 transition duration-300 transform hover:scale-[1.01]">
-                            <span class="text-cyan-400 font-bold text-sm uppercase tracking-wider">FOUNDER & TECHNICAL LEAD</span>
-                            <h3 class="text-3xl font-bold mt-2 text-white">The AeroTechLAB</h3>
-                            <p class="text-lg text-slate-400 mb-4">Entrepreneurial Venture (RC Planes & Drones)</p>
-                            <ul class="list-disc list-outside space-y-2 text-slate-400 ml-5 text-base">
-                                <li><strong>Founded and led</strong> the startup, specializing in state-of-the-art RC planes and drones, overseeing technical design and prototyping.</li>
-                                <li>Organized and conducted multiple <strong>STEM workshops</strong>, driving youth engagement in aerospace and robotics education.</li>
-                                <li>Received <strong>countless awards and recognitions</strong> from top schools and institutions for educational impact.</li>
-                            </ul>
-                        </div>
-                    </div>
-                    
-                    <!-- Item 2: Master Motor Corporation -->
-                    <div class="timeline-item relative pl-10 pb-16 scroll-fade" data-delay="100">
-                        <div class="absolute left-[-15px] top-4 w-8 h-8 rounded-full bg-electric-blue shadow-neon transition duration-500 z-10 flex items-center justify-center">
-                            <svg class="w-4 h-4 text-deep-space" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M10 2a8 8 0 100 16 8 8 0 000-16zM6 9a1 1 0 011-1h6a1 1 0 110 2H7a1 1 0 01-1-1zm3 4a1 1 0 102 0v-2a1 1 0 00-2 0v2z"></path></svg>
-                        </div>
-                        
-                        <div class="bg-gray-800/80 backdrop-blur-sm p-6 rounded-lg shadow-xl border-t-4 border-electric-blue/50 hover:border-electric-blue transition duration-300 transform hover:scale-[1.01]">
-                            <span class="text-electric-blue font-bold text-sm uppercase tracking-wider">Master Motor Corporation (Pvt.) Limited</span>
-                            <h3 class="text-3xl font-bold mt-2 text-white">Trainee Engineer - Production</h3>
-                            <p class="text-lg text-slate-400 mb-4">Industrial Manufacturing (PQ KHI Plant)</p>
-                            <ul class="list-disc list-outside space-y-2 text-slate-400 ml-5 text-base">
-                                <li>Implemented an <strong>AI Car Defect Detection</strong> system using YOLOv8 to identify surface flaws, enhancing quality control efficiency.</li>
-                                <li>Developed a <strong>Vehicle Component Failure Analyzer</strong> (Random Forest model) to predict component failure and enable proactive QC.</li>
-                                <li>Contributed to <strong>Bus Assembly Plant Process Documentation</strong> and a <strong>CO2 Detection Project</strong> for plant safety.</li>
-                            </ul>
-                        </div>
-                    </div>
-                    
-                    <!-- Item 3: Tristar Transport -->
-                    <div class="timeline-item relative pl-10 pb-16 scroll-fade" data-delay="200">
-                        <div class="absolute left-[-15px] top-4 w-8 h-8 rounded-full bg-electric-blue shadow-neon transition duration-500 z-10 flex items-center justify-center">
-                            <svg class="w-4 h-4 text-deep-space" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M13 6a3 3 0 11-6 0 3 3 0 016 0zM18 8a2 2 0 11-4 0 2 2 0 014 0zM14 15a4 4 0 00-8 0v3h8v-3zM6 8a2 2 0 11-4 0 2 2 0 014 0zM16 18H4a1 1 0 01-1-1v-1a4 4 0 014-4h10a4 4 0 014 4v1a1 1 0 01-1 1z"></path></svg>
-                        </div>
-                        
-                        <div class="bg-gray-800/80 backdrop-blur-sm p-6 rounded-lg shadow-xl border-t-4 border-electric-blue/50 hover:border-electric-blue transition duration-300 transform hover:scale-[1.01]">
-                            <span class="text-electric-blue font-bold text-sm uppercase tracking-wider">Tristar Transport Pvt Ltd.</span>
-                            <h3 class="text-3xl font-bold mt-2 text-white">Management Trainee Officer - Maintenance</h3>
-                            <p class="text-lg text-slate-400 mb-4">Fleet & Industrial Maintenance</p>
-                            <ul class="list-disc list-outside space-y-2 text-slate-400 ml-5 text-base">
-                                <li>Managed the maintenance operations for a large industrial fleet, focusing on reliability and cost reduction.</li>
-                                <li>Streamlined workflow documentation and SOPs to improve maintenance response time and effectiveness.</li>
-                                <li>Applied mechanical principles to diagnose and troubleshoot complex equipment failures swiftly.</li>
-                            </ul>
-                        </div>
-                    </div>
 
-                    <!-- Item 4: SM Denim -->
-                    <div class="timeline-item relative pl-10 pb-4 scroll-fade" data-delay="300">
-                        <div class="absolute left-[-15px] top-4 w-8 h-8 rounded-full bg-electric-blue shadow-neon transition duration-500 z-10 flex items-center justify-center">
-                            <svg class="w-4 h-4 text-deep-space" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M5 4a1 1 0 00-1 1v10a1 1 0 001 1h10a1 1 0 001-1V5a1 1 0 00-1-1H5zM10 6a4 4 0 100 8 4 4 0 000-8z"></path></svg>
+                <div class="max-w-3xl mx-auto">
+                    <div class="timeline-container">
+                        <!-- Item 1: The AeroTechLAB -->
+                        <div class="timeline-item relative pl-10 pb-16 scroll-fade">
+                            <div class="absolute left-[-15px] top-4 w-8 h-8 rounded-full bg-electric-blue shadow-neon transition duration-500 z-10 flex items-center justify-center">
+                                <i class="fas fa-rocket w-4 h-4 text-deep-space"></i>
+                            </div>
+                            
+                            <div class="bg-gray-800/80 backdrop-blur-sm p-6 rounded-lg shadow-xl border-t-4 border-electric-blue/50 hover:border-electric-blue transition duration-300 transform hover:scale-[1.01]">
+                                <span class="text-electric-blue font-bold text-sm uppercase tracking-wider">FOUNDER & TECHNICAL LEAD</span>
+                                <h3 class="text-3xl font-bold mt-2 text-white">The AeroTechLAB</h3>
+                                <p class="text-lg text-slate-400 mb-4">Entrepreneurial Venture (RC Planes & Drones)</p>
+                                <ul class="list-disc list-outside space-y-2 text-slate-400 ml-5 text-base">
+                                    <li><strong>Founded and led</strong> the startup, specializing in state-of-the-art RC planes and drones, overseeing technical design and prototyping.</li>
+                                    <li>Organized and conducted multiple **STEM workshops**, driving youth engagement in aerospace and robotics education.</li>
+                                    <li>Received **countless awards and recognitions** from top schools and institutions for educational impact.</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <!-- Item 2: Master Motor Corporation -->
+                        <div class="timeline-item relative pl-10 pb-16 scroll-fade" data-delay="100">
+                            <div class="absolute left-[-15px] top-4 w-8 h-8 rounded-full bg-electric-blue shadow-neon transition duration-500 z-10 flex items-center justify-center">
+                                <i class="fas fa-car-side w-4 h-4 text-deep-space"></i>
+                            </div>
+                            
+                            <div class="bg-gray-800/80 backdrop-blur-sm p-6 rounded-lg shadow-xl border-t-4 border-electric-blue/50 hover:border-electric-blue transition duration-300 transform hover:scale-[1.01]">
+                                <span class="text-electric-blue font-bold text-sm uppercase tracking-wider">Master Motor Corporation (Pvt.) Limited</span>
+                                <h3 class="text-3xl font-bold mt-2 text-white">Trainee Engineer - Production</h3>
+                                <p class="text-lg text-slate-400 mb-4">Industrial Manufacturing (PQ KHI Plant)</p>
+                                <ul class="list-disc list-outside space-y-2 text-slate-400 ml-5 text-base">
+                                    <li>Implemented an <strong>AI Car Defect Detection</strong> system using YOLOv8 to identify surface flaws, enhancing quality control efficiency.</li>
+                                    <li>Developed a <strong>Vehicle Component Failure Analyzer</strong> (Random Forest model) to predict component failure and enable proactive QC.</li>
+                                    <li>Contributed to <strong>Bus Assembly Plant Process Documentation</strong> and a <strong>CO2 Detection Project</strong> for plant safety.</li>
+                                </ul>
+                            </div>
                         </div>
                         
-                        <div class="bg-gray-800/80 backdrop-blur-sm p-6 rounded-lg shadow-xl border-t-4 border-electric-blue/50 hover:border-electric-blue transition duration-300 transform hover:scale-[1.01]">
-                            <span class="text-electric-blue font-bold text-sm uppercase tracking-wider">SM Denim Textile Mills</span>
-                            <h3 class="text-3xl font-bold mt-2 text-white">Management Trainee Officer - Maintenance</h3>
-                            <p class="text-lg text-slate-400 mb-4">Textile Machinery & Infrastructure</p>
-                            <ul class="list-disc list-outside space-y-2 text-slate-400 ml-5 text-base">
-                                <li>Developed the <strong>Automated Inventory System</strong>, a comprehensive parts list and real-time monitoring dashboard, adopted industry-wide.</li>
-                                <li>This system ensured faster decision-making and proactive maintenance scheduling, minimizing downtime.</li>
-                                <li>Oversaw routine and predictive maintenance schedules for critical textile machinery.</li>
-                            </ul>
+                        <!-- Item 3: Tristar Transport (Missing, now added) -->
+                        <div class="timeline-item relative pl-10 pb-16 scroll-fade" data-delay="200">
+                            <div class="absolute left-[-15px] top-4 w-8 h-8 rounded-full bg-electric-blue shadow-neon transition duration-500 z-10 flex items-center justify-center">
+                                <svg class="w-4 h-4 text-deep-space" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M13 6a3 3 0 11-6 0 3 3 0 016 0zM18 8a2 2 0 11-4 0 2 2 0 014 0zM14 15a4 4 0 00-8 0v3h8v-3zM6 8a2 2 0 11-4 0 2 2 0 014 0zM16 18H4a1 1 0 01-1-1v-1a4 4 0 014-4h10a4 4 0 014 4v1a1 1 0 01-1 1z"></path></svg>
+                            </div>
+                            
+                            <div class="bg-gray-800/80 backdrop-blur-sm p-6 rounded-lg shadow-xl border-t-4 border-electric-blue/50 hover:border-electric-blue transition duration-300 transform hover:scale-[1.01]">
+                                <span class="text-electric-blue font-bold text-sm uppercase tracking-wider">Tristar Transport Pvt Ltd.</span>
+                                <h3 class="text-3xl font-bold mt-2 text-white">Management Trainee Officer - Maintenance</h3>
+                                <p class="text-lg text-slate-400 mb-4">Fleet & Industrial Maintenance</p>
+                                <ul class="list-disc list-outside space-y-2 text-slate-400 ml-5 text-base">
+                                    <li>Managed the maintenance operations for a large industrial fleet, focusing on reliability and cost reduction.</li>
+                                    <li>Streamlined workflow documentation and SOPs to improve maintenance response time and effectiveness.</li>
+                                    <li>Applied mechanical principles to diagnose and troubleshoot complex equipment failures swiftly.</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <!-- Item 4: SM Denim Textile Mills (Missing, now added) -->
+                        <div class="timeline-item relative pl-10 pb-4 scroll-fade" data-delay="300">
+                            <div class="absolute left-[-15px] top-4 w-8 h-8 rounded-full bg-electric-blue shadow-neon transition duration-500 z-10 flex items-center justify-center">
+                                <svg class="w-4 h-4 text-deep-space" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M5 4a1 1 0 00-1 1v10a1 1 0 001 1h10a1 1 0 001-1V5a1 1 0 00-1-1H5zM10 6a4 4 0 100 8 4 4 0 000-8z"></path></svg>
+                            </div>
+                            
+                            <div class="bg-gray-800/80 backdrop-blur-sm p-6 rounded-lg shadow-xl border-t-4 border-electric-blue/50 hover:border-electric-blue transition duration-300 transform hover:scale-[1.01]">
+                                <span class="text-electric-blue font-bold text-sm uppercase tracking-wider">SM Denim Textile Mills</span>
+                                <h3 class="text-3xl font-bold mt-2 text-white">Management Trainee Officer - Maintenance</h3>
+                                <p class="text-lg text-slate-400 mb-4">Textile Machinery & Infrastructure</p>
+                                <ul class="list-disc list-outside space-y-2 text-slate-400 ml-5 text-base">
+                                    <li>Developed the <strong>Automated Inventory System</strong>, a comprehensive parts list and real-time monitoring dashboard, adopted industry-wide.</li>
+                                    <li>This system ensured faster decision-making and proactive maintenance scheduling, minimizing downtime.</li>
+                                    <li>Oversaw routine and predictive maintenance schedules for critical textile machinery.</li>
+                                </ul>
+                            </div>
                         </div>
                     </div>
-                    
                 </div>
             </div>
         </section>
 
-        <!-- === 4. Projects Section - Holographic Grid === -->
+        <!-- === 4. Projects Section - Holographic Grid (Missing, now added) === -->
         <section id="projects" class="py-24 bg-gray-900/50 border-t border-b border-electric-blue/10">
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                  <h2 class="text-5xl font-extrabold text-center mb-16 text-white scroll-fade">
@@ -509,23 +395,23 @@
                     <div class="project-card scroll-fade bg-gray-900/70 p-6 rounded-xl border border-electric-blue/30 shadow-neon-dark hover:shadow-neon transition duration-500">
                         <h3 class="text-2xl font-bold text-electric-blue text-neon mb-2">AI Car Defect Detection App</h3>
                         <p class="text-slate-400 mb-4">Computer Vision (YOLOv8) | Production QC</p>
-                        <p class="text-slate-500 mb-4 text-sm">Trained an AI model to detect car body defects (scratches, dents, paint issues) with high accuracy using a custom YOLOv8 model, enhancing final vehicle quality control.</p>
+                        <p class="text-slate-300 mb-4 text-sm">Trained an AI model to detect car body defects (scratches, dents, paint issues) with high accuracy using a custom YOLOv8 model, enhancing final vehicle quality control.</p>
                         <p class="text-xs font-mono text-cyan-400 mt-2">Built with: Python, YOLOv8, OpenCV, Streamlit</p>
                     </div>
 
-                    <!-- Project Card 2: Vehicle Component Failure Analyzer -->
+                    <!-- Project Card 2: Predictive Failure Analyzer -->
                     <div class="project-card scroll-fade bg-gray-900/70 p-6 rounded-xl border border-electric-blue/30 shadow-neon-dark hover:shadow-neon transition duration-500" data-delay="100">
                         <h3 class="text-2xl font-bold text-electric-blue text-neon mb-2">Predictive Failure Analyzer</h3>
                         <p class="text-slate-400 mb-4">Machine Learning | Predictive Maintenance</p>
-                        <p class="text-slate-500 mb-4 text-sm">Developed and trained a <strong>Random Forest AI model</strong> to predict car component defects based on operational parameters, significantly reducing failure rates in manufacturing.</p>
+                        <p class="text-slate-300 mb-4 text-sm">Developed and trained a <strong>Random Forest AI model</strong> to predict car component defects based on operational parameters, significantly reducing failure rates in manufacturing.</p>
                         <p class="text-xs font-mono text-cyan-400 mt-2">Built with: Python, Random Forest, Streamlit</p>
                     </div>
-                    
-                    <!-- Project Card 3: Final Year Project (De-Dusting) -->
+
+                    <!-- Project Card 3: Advanced De-Dusting Plant Design -->
                     <div class="project-card scroll-fade bg-gray-900/70 p-6 rounded-xl border border-electric-blue/30 shadow-neon-dark hover:shadow-neon transition duration-500" data-delay="200">
                         <h3 class="text-2xl font-bold text-electric-blue text-neon mb-2">Advanced De-Dusting Plant Design</h3>
                         <p class="text-slate-400 mb-4">CFD Simulation | Design Automation | Capstone</p>
-                        <p class="text-slate-500 mb-4 text-sm">Final Year Project on design automation and feasibility analysis for a system extracting 150,000 cfm dust/fume flow from an electric arc furnace. Awarded the <strong>highest capstone score</strong>.</p>
+                        <p class="text-slate-300 mb-4 text-sm">Final Year Project on design automation and feasibility analysis for a system extracting $150,000 \, \text{cfm}$ dust/fume flow from an electric arc furnace. Awarded the <strong>highest capstone score</strong>.</p>
                         <p class="text-xs font-mono text-cyan-400 mt-2">Collaboration: People Steel Mills</p>
                     </div>
 
@@ -533,206 +419,203 @@
                     <div class="project-card scroll-fade bg-gray-900/70 p-6 rounded-xl border border-electric-blue/30 shadow-neon-dark hover:shadow-neon transition duration-500" data-delay="300">
                         <h3 class="text-2xl font-bold text-electric-blue text-neon mb-2">Automated Inventory System</h3>
                         <p class="text-slate-400 mb-4">Process Automation | Real-Time Monitoring</p>
-                        <p class="text-slate-500 mb-4 text-sm">Collaborated on the first-ever comprehensive parts list and real-time monitoring dashboard for maintenance, which was adopted industry-wide at SM Denim Mills.</p>
+                        <p class="text-slate-300 mb-4 text-sm">Collaborated on the first-ever comprehensive parts list and real-time monitoring dashboard for maintenance, which was adopted industry-wide at SM Denim Mills.</p>
                         <p class="text-xs font-mono text-cyan-400 mt-2">Impact: Faster Decision-Making & Maintenance</p>
                     </div>
 
-                    <!-- Project Card 5: WeedBot -->
+                    <!-- Project Card 5: WeedBot Project -->
                     <div class="project-card scroll-fade bg-gray-900/70 p-6 rounded-xl border border-electric-blue/30 shadow-neon-dark hover:shadow-neon transition duration-500" data-delay="400">
                         <h3 class="text-2xl font-bold text-electric-blue text-neon mb-2">WeedBot Project</h3>
                         <p class="text-slate-400 mb-4">Robotics | Autonomous Systems</p>
-                        <p class="text-slate-500 mb-4 text-sm">Development of a prototype autonomous agricultural robot (WeedBot) designed for efficient task completion and application of advanced robotics concepts.</p>
+                        <p class="text-slate-300 mb-4 text-sm">Development of a prototype autonomous agricultural robot (WeedBot) designed for efficient task completion and application of advanced robotics concepts.</p>
                         <p class="text-xs font-mono text-cyan-400 mt-2">Institution: NCAI NEDUET</p>
                     </div>
-                    
-                    <!-- Project Card 6: CO2 Detection -->
+
+                    <!-- Project Card 6: CO2 Detection & Safety System -->
                     <div class="project-card scroll-fade bg-gray-900/70 p-6 rounded-xl border border-electric-blue/30 shadow-neon-dark hover:shadow-neon transition duration-500" data-delay="500">
                         <h3 class="text-2xl font-bold text-electric-blue text-neon mb-2">CO2 Detection & Safety System</h3>
                         <p class="text-slate-400 mb-4">Environmental Safety | Instrumentation</p>
-                        <p class="text-slate-500 mb-4 text-sm">Implementation and validation of a safety-critical CO2 detection project at the MMCL Plant, ensuring compliance and worker protection in high-risk zones.</p>
+                        <p class="text-slate-300 mb-4 text-sm">Implementation and validation of a safety-critical CO2 detection project at the MMCL Plant, ensuring compliance and worker protection in high-risk zones.</p>
                         <p class="text-xs font-mono text-cyan-400 mt-2">Location: MMCL Plant - PQ KHI</p>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- === 5. Contact Section - Final Call to Action === -->
+        <!-- === 5. Contact Section - Final Call to Action (Missing, now added) === -->
         <section id="contact" class="py-24">
             <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center scroll-fade">
-                <h2 class="text-5xl font-extrabold mb-4 text-white">
-                    <span class="text-electric-blue text-neon">Let's Connect</span> & Drive Innovation
+                <p class="text-electric-blue text-lg font-semibold mb-3">CYBER-MECHANICAL STRATEGIST</p>
+                <h2 class="text-5xl font-extrabold mb-6 text-white text-neon">
+                    Let's Connect <span class="text-electric-blue">& Drive Innovation</span>
                 </h2>
-                <p class="text-slate-400 text-lg mb-8 max-w-2xl mx-auto">
+                <p class="text-slate-400 text-xl max-w-2xl mx-auto mb-10">
                     I am actively seeking strategic roles where I can drive innovation in mechanical engineering and R&D, particularly utilizing AI/ML for process optimization.
                 </p>
+                
                 <div class="flex flex-col sm:flex-row justify-center space-y-4 sm:space-y-0 sm:space-x-6">
                     <!-- Email Link -->
-                    <a href="mailto:engr.areebriz@gmail.com" class="px-10 py-4 bg-electric-blue text-gray-900 font-extrabold rounded-xl shadow-neon transition duration-500 transform hover:scale-105">
-                        Email Me Now
+                    <a href="mailto:your.email@example.com" class="px-8 py-4 bg-electric-blue text-gray-900 font-extrabold rounded-xl shadow-neon transition duration-500 transform hover:scale-105 flex items-center justify-center">
+                        <i class="fas fa-envelope mr-3"></i> Email Me Now
                     </a>
+                    
                     <!-- LinkedIn Link -->
-                    <a href="https://www.linkedin.com/in/areebrizwan" target="_blank" class="px-10 py-4 border-2 border-electric-blue text-electric-blue font-extrabold rounded-xl hover:bg-electric-blue/10 transition duration-300">
-                        LinkedIn Profile
-                    </a>
-                    <!-- Resume Link -->
-                    <a href="https://drive.google.com/file/d/1pugqgE4Jhv87qrnjXhehYScxh_srNq_h/view?usp=drive_link" target="_blank" class="px-10 py-4 border-2 border-slate-700 text-slate-300 font-extrabold rounded-xl hover:bg-slate-700/50 transition duration-300">
-                        Download Resume
+                    <a href="https://linkedin.com/in/yourprofile" target="_blank" class="px-8 py-4 border-2 border-electric-blue text-electric-blue font-extrabold rounded-xl hover:bg-electric-blue/10 transition duration-300 flex items-center justify-center">
+                        <i class="fab fa-linkedin mr-3"></i> LinkedIn Profile
                     </a>
                 </div>
             </div>
         </section>
-
     </main>
 
-    <!-- Footer -->
-    <footer class="bg-gray-900/50 border-t border-electric-blue/20 py-6 text-center text-slate-500">
-        <p class="text-sm">&copy; 2025 Muhammad Areeb Rizwan. All Rights Reserved. | Designed for High Impact.</p>
+    <!-- Footer (Missing, now added) -->
+    <footer class="border-t border-electric-blue/20 py-8">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-slate-500 text-sm">
+            <!-- Footer uses the full name as per your source text -->
+            <p>&copy; 2025 Muhammad Areeb Rizwan. All Rights Reserved. | Designed for High Impact.</p>
+        </div>
     </footer>
     
     <!-- Back to Top Button -->
-    <div id="back-to-top" class="back-to-top">
-        <i class="fas fa-arrow-up"></i>
-    </div>
+    <button id="back-to-top" class="back-to-top">
+        <i class="fas fa-arrow-up text-xl"></i>
+    </button>
 
-    <!-- JavaScript for Interactive Features -->
-    <script>
-        // Mobile Menu Toggle
-        const mobileMenuButton = document.getElementById('mobile-menu-button');
-        const mobileMenu = document.getElementById('mobile-menu');
-        const closeMenu = document.getElementById('close-menu');
-        
+<!-- === JavaScript for Interactivity === -->
+<script>
+    // ------------------------------------------------------------------
+    // 1. Mobile Menu Toggle Logic
+    // ------------------------------------------------------------------
+    const mobileMenuButton = document.getElementById('mobile-menu-button');
+    const closeMenuButton = document.getElementById('close-menu');
+    const mobileMenu = document.getElementById('mobile-menu');
+    const mobileNavLinks = mobileMenu ? mobileMenu.querySelectorAll('a') : [];
+
+    if (mobileMenuButton && mobileMenu) {
         mobileMenuButton.addEventListener('click', () => {
             mobileMenu.classList.add('open');
         });
-        
-        closeMenu.addEventListener('click', () => {
+    }
+
+    if (closeMenuButton && mobileMenu) {
+        closeMenuButton.addEventListener('click', () => {
             mobileMenu.classList.remove('open');
         });
-        
-        // Close mobile menu when clicking on a link
-        document.querySelectorAll('#mobile-menu a').forEach(link => {
-            link.addEventListener('click', () => {
+    }
+
+    // Close menu when a link is clicked
+    mobileNavLinks.forEach(link => {
+        link.addEventListener('click', () => {
+            if (mobileMenu) {
                 mobileMenu.classList.remove('open');
-            });
+            }
         });
-        
-        // Back to Top Button
-        const backToTopButton = document.getElementById('back-to-top');
-        
+    });
+
+    // ------------------------------------------------------------------
+    // 2. Scroll-Fade-In Observer (Applies to all .scroll-fade elements)
+    // ------------------------------------------------------------------
+    const faders = document.querySelectorAll('.scroll-fade');
+
+    const appearOptions = {
+        threshold: 0.1,
+        rootMargin: "0px 0px -50px 0px"
+    };
+
+    const appearOnScroll = new IntersectionObserver(function(entries, appearOnScroll) {
+        entries.forEach(entry => {
+            if (!entry.isIntersecting) {
+                return;
+            }
+            // Use setTimeout with the data-delay attribute for staggered animation
+            const delay = entry.target.getAttribute('data-delay') || 0;
+            setTimeout(() => {
+                entry.target.classList.add('visible');
+                appearOnScroll.unobserve(entry.target);
+            }, delay);
+        });
+    }, appearOptions);
+
+    faders.forEach(fader => {
+        appearOnScroll.observe(fader);
+    });
+
+    // ------------------------------------------------------------------
+    // 3. Skill Progress Bar Animation
+    // ------------------------------------------------------------------
+    const skillProgressBars = document.querySelectorAll('.skill-progress-bar');
+    const skillSection = document.getElementById('skills');
+
+    const skillObserver = new IntersectionObserver(function(entries, skillObserver) {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                skillProgressBars.forEach(bar => {
+                    const width = bar.getAttribute('data-width');
+                    bar.style.width = width + '%';
+                });
+                skillObserver.unobserve(entry.target);
+            }
+        });
+    }, { threshold: 0.5 });
+
+    if (skillSection) {
+        skillObserver.observe(skillSection);
+    }
+    
+    // ------------------------------------------------------------------
+    // 4. Back to Top Button Logic
+    // ------------------------------------------------------------------
+    const backToTopButton = document.getElementById('back-to-top');
+
+    if (backToTopButton) {
         window.addEventListener('scroll', () => {
-            if (window.pageYOffset > 300) {
+            if (window.scrollY > 300) {
                 backToTopButton.classList.add('visible');
             } else {
                 backToTopButton.classList.remove('visible');
             }
         });
-        
+
         backToTopButton.addEventListener('click', () => {
             window.scrollTo({
                 top: 0,
                 behavior: 'smooth'
             });
         });
+    }
+
+    // ------------------------------------------------------------------
+    // 5. Particle Generator (for visual flair)
+    // ------------------------------------------------------------------
+    const particlesContainer = document.getElementById('particles-container');
+    const numberOfParticles = 20;
+
+    function createParticle() {
+        const particle = document.createElement('div');
+        particle.classList.add('particle');
+
+        // Random position
+        const size = Math.random() * 3 + 2; // Size between 2px and 5px
+        particle.style.width = `${size}px`;
+        particle.style.height = `${size}px`;
+        particle.style.left = `${Math.random() * 100}%`;
+        particle.style.top = `${Math.random() * 100}%`;
         
-        // Skill Progress Bars Animation
-        const skillProgressBars = document.querySelectorAll('.skill-progress-bar');
+        // Random animation
+        const duration = Math.random() * 10 + 10; // 10s to 20s
+        const delay = Math.random() * 5;
         
-        const animateSkillBars = () => {
-            skillProgressBars.forEach(bar => {
-                const width = bar.getAttribute('data-width');
-                bar.style.width = width + '%';
-            });
-        };
-        
-        // Create Floating Particles
-        function createParticles() {
-            const container = document.getElementById('particles-container');
-            const particleCount = 30;
-            
-            for (let i = 0; i < particleCount; i++) {
-                const particle = document.createElement('div');
-                particle.classList.add('particle');
-                
-                // Random position
-                const posX = Math.random() * 100;
-                const posY = Math.random() * 100;
-                
-                particle.style.left = `${posX}%`;
-                particle.style.top = `${posY}%`;
-                
-                // Random size
-                const size = Math.random() * 3 + 1;
-                particle.style.width = `${size}px`;
-                particle.style.height = `${size}px`;
-                
-                // Random animation
-                const duration = Math.random() * 20 + 10;
-                const delay = Math.random() * 5;
-                
-                particle.style.animation = `float ${duration}s ease-in-out ${delay}s infinite`;
-                
-                container.appendChild(particle);
-            }
+        particle.style.animation = `float ${duration}s ease-in-out infinite alternate`;
+        particle.style.animationDelay = `-${delay}s`; // Start at a random point
+
+        particlesContainer.appendChild(particle);
+    }
+
+    if (particlesContainer) {
+        for (let i = 0; i < numberOfParticles; i++) {
+            createParticle();
         }
-        
-        // Simple Intersection Observer for scroll-fade animations
-        const faders = document.querySelectorAll('.scroll-fade');
-
-        const appearOptions = {
-            threshold: 0.1,
-            rootMargin: "0px 0px -50px 0px"
-        };
-
-        const appearOnScroll = new IntersectionObserver(function(entries, appearOnScroll) {
-            entries.forEach(entry => {
-                if (!entry.isIntersecting) {
-                    return;
-                } else {
-                    const delay = entry.target.getAttribute('data-delay') || 0;
-                    setTimeout(() => {
-                        entry.target.classList.add('visible');
-                        
-                        // Animate skill bars when skills section becomes visible
-                        if (entry.target.closest('#skills')) {
-                            animateSkillBars();
-                        }
-                        
-                        appearOnScroll.unobserve(entry.target); 
-                    }, delay);
-                }
-            });
-        }, appearOptions);
-
-        faders.forEach(fader => {
-            appearOnScroll.observe(fader);
-        });
-
-        // Ensure initial elements are visible right away
-        document.addEventListener('DOMContentLoaded', () => {
-            document.querySelectorAll('#hero .scroll-fade').forEach(el => el.classList.add('visible'));
-            createParticles();
-        });
-
-        // Smooth Scrolling for all internal anchor links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const targetId = this.getAttribute('href');
-                const targetElement = document.querySelector(targetId);
-                
-                if (targetElement) {
-                    const headerHeight = document.getElementById('header').offsetHeight;
-                    const targetPosition = targetElement.offsetTop - headerHeight - 20;
-                    
-                    window.scrollTo({
-                        top: targetPosition,
-                        behavior: 'smooth'
-                    });
-                } else {
-                    window.open(this.href, '_blank');
-                }
-            });
-        });
-    </script>
+    }
+</script>
 </body>
 </html>
