@@ -8,24 +8,37 @@ class Cloud {
   constructor() {
     this.x = Math.random() * canvas.width;
     this.y = Math.random() * canvas.height / 2;
-    this.size = 50 + Math.random() * 50;
-    this.speed = 0.2 + Math.random() * 0.5;
+    this.size = 60 + Math.random() * 70; // Larger clouds for depth
+    this.speed = 0.1 + Math.random() * 0.4; // Slower speed for smoother movement
+    this.opacity = 0.3 + Math.random() * 0.3; // Varying opacity
+    this.initialSize = this.size;
   }
+  
   draw() {
-    ctx.fillStyle = 'rgba(255,255,255,0.5)'; // softer clouds for blending
+    ctx.fillStyle = `rgba(255,255,255,${this.opacity})`;
     ctx.beginPath();
-    ctx.ellipse(this.x, this.y, this.size, this.size/2, 0, 0, Math.PI*2);
+    // Complex cloud shape using multiple circles for a more natural look
+    ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+    ctx.arc(this.x - this.size * 0.5, this.y + this.size * 0.2, this.size * 0.6, 0, Math.PI * 2);
+    ctx.arc(this.x + this.size * 0.6, this.y + this.size * 0.1, this.size * 0.7, 0, Math.PI * 2);
     ctx.fill();
   }
+  
   update() {
     this.x += this.speed;
-    if(this.x - this.size > canvas.width) this.x = -this.size;
+    // Simple vertical oscillation for subtle movement (breathing effect)
+    this.y += Math.sin(Date.now() * 0.001 * this.speed) * 0.05; 
+    
+    // Loop clouds back to the start
+    if(this.x - this.size > canvas.width) this.x = -this.size * 2;
+    
     this.draw();
   }
 }
 
 const cloudArr = [];
-for(let i=0;i<15;i++) cloudArr.push(new Cloud());
+// Increased cloud count for a more immersive sky
+for(let i=0;i<25;i++) cloudArr.push(new Cloud());
 
 function animate() {
   ctx.clearRect(0,0,canvas.width,canvas.height);
@@ -44,6 +57,9 @@ const clouds = document.querySelectorAll('.cloud');
 clouds.forEach(cloud => {
   cloud.addEventListener('click', () => {
     const target = cloud.dataset.target;
-    window.location.href = target;
+    // Added a small delay for a smoother cinematic transition
+    setTimeout(() => {
+        window.location.href = target;
+    }, 200); 
   });
 });
