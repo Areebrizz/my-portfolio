@@ -1,1 +1,91 @@
+/* Reset */
+* { margin:0; padding:0; box-sizing: border-box; }
+html, body { width:100%; height:100%; font-family: Arial, sans-serif; overflow-x:hidden; }
 
+/* Canvas background */
+#bg-canvas {
+  position: fixed;
+  top:0; left:0;
+  width:100%; height:100%;
+  z-index:1;
+  background: linear-gradient(to bottom, #87ceeb, #f0f8ff);
+}
+
+/* Hero full-screen section */
+.hero-container {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  overflow: hidden;
+  color: #fff;
+  z-index:2;
+}
+
+/* Avatar */
+.avatar-container { 
+  position: relative; 
+  z-index:2; 
+  padding: 20px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.05); /* subtle halo */
+}
+#avatar {
+  width: 180px;
+  height: auto;
+  border-radius: 50%;
+  animation: float 3s ease-in-out infinite;
+  box-shadow: 0 15px 25px rgba(255,255,255,0.3);
+}
+@keyframes float {
+  0%,100% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+}
+
+/* Small clouds around avatar */
+.avatar-cloud {
+  width: 40px;
+  height: 20px;
+  background: rgba(255,255,255,0.8);
+  border-radius: 50px;
+  position: absolute;
+  animation: floatCloud 5s linear infinite;
+}
+@keyframes floatCloud {
+  0% { transform: translateY(0px); }
+  50% { transform: translateY(-8px); }
+  100% { transform: translateY(0px); }
+}
+
+/* Hero Text */
+h1 { font-size: 2rem; margin-top:20px; color:#333; }
+p { font-size: 1.2rem; margin-top:10px; color:#555; }
+
+/* Floating clouds */
+.clouds {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+  margin-top:30px;
+  position: relative;
+  z-index:2;
+}
+.cloud {
+  background: #fff;
+  color:#333;
+  padding: 12px 25px;
+  border-radius:50px;
+  font-weight:bold;
+  cursor:pointer;
+  box-shadow: 2px 4px 10px rgba(0,0,0,0.2);
+  transition: transform 0.3s, background 0.3s;
+}
+.cloud:hover { transform: translateY(-10px) scale(1.1); background:#f0f0f0; }
+
+/* Footer */
+footer { position: absolute; bottom:10px; width:100%; text-align:center; color:#333; z-index:2; font-size:0.9rem; }
