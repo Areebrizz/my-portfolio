@@ -3,152 +3,134 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Muhammad Areeb Rizwan | Mechanical Engineer & Leader</title>
-    <meta name="description" content="Muhammad Areeb Rizwan - Specializing in innovative mechanical engineering, research, and leadership.">
+    <title>Muhammad Areeb Rizwan | Cyber-Mechanical Engineer</title>
+    <meta name="description" content="Muhammad Areeb Rizwan - Specializing in innovative mechanical engineering, research, and technical leadership with a focus on cutting-edge systems.">
     <!-- Load Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800;900&display=swap" rel="stylesheet">
     
     <style>
-        /* CSS Variables & Base Styles */
+        /* --- Cyber-Engineering Theme Variables --- */
         :root {
-            --deep-navy: #0F172A; /* Slate 900 */
-            --electric-cyan: #22D3EE; /* Cyan 400 */
-            --light-slate: #94A3B8; /* Slate 400 */
-            --cool-white: #F8FAFC; /* Slate 50 */
+            --deep-space: #030712; /* Darker than before */
+            --electric-blue: #06B6D4; /* Brighter Cyan 500/600 */
+            --neon-glow-light: rgba(6, 182, 212, 0.6);
+            --neon-glow-dark: rgba(6, 182, 212, 0.2);
+            --off-white: #F9FAFB;
         }
 
         body {
             font-family: 'Inter', sans-serif;
-            background-color: var(--deep-navy);
-            color: var(--cool-white);
+            background-color: var(--deep-space);
+            color: var(--off-white);
             overflow-x: hidden;
+            scroll-behavior: smooth;
         }
 
-        /* --- Header & Navigation (Glassmorphism) --- */
-        .header-bg {
-            /* Increased transparency and blur for a 'glass' effect */
-            background-color: rgba(15, 23, 42, 0.7); 
-            backdrop-filter: blur(12px); 
-        }
-
-        /* --- Dynamic Background Effect --- */
-        body::before {
-            content: '';
+        /* --- Animated Grid Background --- */
+        .grid-background {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            /* Subtle, slow-moving radial light sources */
-            background: radial-gradient(circle at 10% 20%, rgba(34, 211, 238, 0.05) 0%, transparent 40%),
-                        radial-gradient(circle at 90% 80%, rgba(34, 211, 238, 0.05) 0%, transparent 40%);
-            pointer-events: none;
-            z-index: -1;
-            animation: subtle-pulse 15s ease-in-out infinite alternate;
+            background-image: 
+                linear-gradient(to right, rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+            background-size: 30px 30px;
+            z-index: -20;
+            /* Subtle animation for a 'data flow' feel */
+            animation: grid-scroll 120s linear infinite;
         }
 
-        @keyframes subtle-pulse {
-            0% { transform: scale(1); opacity: 0.9; }
-            100% { transform: scale(1.05); opacity: 1; }
+        @keyframes grid-scroll {
+            from { background-position: 0 0; }
+            to { background-position: 3000px 3000px; }
+        }
+
+        /* --- Header: More defined Glassmorphism --- */
+        .header-bg {
+            background-color: rgba(3, 7, 18, 0.85); 
+            backdrop-filter: blur(15px); 
+            border-bottom: 1px solid var(--neon-glow-dark);
+        }
+
+        /* --- Neon Glow Utility --- */
+        .text-neon {
+            text-shadow: 0 0 5px var(--neon-glow-light), 0 0 10px var(--neon-glow-dark);
+        }
+
+        .shadow-neon {
+            box-shadow: 0 0 20px var(--neon-glow-dark), 0 0 40px var(--neon-glow-dark);
+            transition: all 0.4s ease;
         }
         
-        /* --- Avatar & Blending Fix --- */
-        
-        .avatar-glow {
+        .shadow-neon:hover {
+             box-shadow: 0 0 30px var(--neon-glow-light), 0 0 60px var(--neon-glow-light);
+             transform: translateY(-2px);
+        }
+
+        /* --- Avatar Styling --- */
+        #avatar-container {
             position: relative;
-            z-index: 10;
-            /* Large, soft background glow to replace the 'oval' issue */
-            background: radial-gradient(circle at center, rgba(34, 211, 238, 0.15) 0%, rgba(34, 211, 238, 0) 60%);
-            padding: 2rem;
+            padding: 10px;
+            background: radial-gradient(circle at center, var(--neon-glow-dark) 0%, transparent 70%);
             border-radius: 50%;
-            /* Apply a subtle float animation */
-            animation: float 4s ease-in-out infinite;
+            animation: pulse-glow 3s ease-in-out infinite alternate;
         }
 
         #avatar-img {
-            width: 320px;
-            height: 320px;
+            width: 300px;
+            height: 300px;
             object-fit: cover;
             border-radius: 50%;
-            border: 4px solid rgba(34, 211, 238, 0.2); 
-            /* The critical drop shadow to make it blend and look 3D */
-            filter: drop-shadow(0 0 40px rgba(34, 211, 238, 0.4)) 
-                    grayscale(10%); 
+            border: 4px solid var(--electric-blue); 
+            filter: drop-shadow(0 0 15px var(--neon-glow-dark)) grayscale(20%); 
             transition: all 0.4s ease;
         }
 
         #avatar-img:hover {
-            transform: scale(1.03);
-            filter: drop-shadow(0 0 60px rgba(34, 211, 238, 0.7)) 
-                    grayscale(0%);
+            filter: drop-shadow(0 0 30px var(--neon-glow-light)) grayscale(0%);
+            transform: scale(1.02);
+        }
+        
+        @keyframes pulse-glow {
+            0% { box-shadow: 0 0 5px var(--neon-glow-dark); }
+            100% { box-shadow: 0 0 20px var(--neon-glow-light); }
         }
 
-        /* --- Animations --- */
-        @keyframes float {
-            0%, 100% { transform: translateY(0px); }
-            50% { transform: translateY(-15px); }
-        }
-
-        /* Scroll effects for content */
+        /* --- Scroll Animation (Kept simple and clean) --- */
         .scroll-fade {
             opacity: 0;
-            transform: translateY(20px);
-            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+            transform: translateY(30px);
+            transition: opacity 1s ease-out, transform 1s ease-out;
         }
         .scroll-fade.visible {
             opacity: 1;
             transform: translateY(0);
         }
-
-        /* Timeline specific styling */
-        .timeline {
-            border-left: 3px solid var(--electric-cyan);
-            padding-left: 20px;
-            position: relative;
-        }
-
-        .timeline-item {
-            margin-bottom: 40px;
-            position: relative;
-        }
-
-        .timeline-item::before {
-            content: '';
-            position: absolute;
-            left: -32px; /* Position the dot over the line */
-            top: 5px;
-            width: 15px;
-            height: 15px;
-            background: var(--electric-cyan);
-            border: 3px solid var(--deep-navy);
-            border-radius: 50%;
-            z-index: 20;
-            transition: all 0.3s ease;
-        }
-        
-        .timeline-item:hover::before {
-            background: var(--cool-white);
-            transform: scale(1.2);
-        }
     </style>
 </head>
 <body class="selection:bg-cyan-700 selection:text-white">
 
-    <!-- Background Canvas Placeholder (Now enhanced by body::before) -->
-    <div class="fixed inset-0 bg-gradient-to-br from-gray-900 to-slate-900 -z-20"></div>
+    <!-- Animated Grid Background -->
+    <div class="grid-background"></div>
+    <!-- Global Color Field Effect -->
+    <div class="fixed inset-0 pointer-events-none -z-10" style="background: radial-gradient(circle at 80% 10%, rgba(6, 182, 212, 0.1) 0%, transparent 40%);"></div>
 
-    <!-- Header & Navigation (Glassmorphism applied via CSS) -->
-    <header id="header" class="header-bg fixed top-0 w-full z-50 transition duration-300 shadow-2xl">
+    <!-- Header & Navigation (Fixed, Glassy Bar) -->
+    <header id="header" class="header-bg fixed top-0 w-full z-50 transition duration-300">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex justify-between items-center">
-            <a href="#hero" class="text-3xl font-extrabold tracking-tight text-white">AR<span class="text-cyan-400">.</span></a>
+            <a href="#hero" class="text-3xl font-extrabold tracking-widest text-white text-neon">
+                MA<span class="text-electric-blue">R</span>
+            </a>
             <nav>
                 <ul class="flex space-x-8 text-lg font-medium">
-                    <li><a href="#hero" class="text-slate-300 hover:text-cyan-400 transition">Home</a></li>
-                    <li><a href="#skills" class="text-slate-300 hover:text-cyan-400 transition">Skills</a></li>
-                    <li><a href="#experiences" class="text-slate-300 hover:text-cyan-400 transition">Experience</a></li>
-                    <li><a href="#projects" class="text-slate-300 hover:text-cyan-400 transition">Projects</a></li>
-                    <li><a href="#contact" class="text-slate-300 hover:text-cyan-400 transition">Contact</a></li>
+                    <li><a href="#hero" class="text-slate-300 hover:text-electric-blue hover:text-neon transition duration-300">Home</a></li>
+                    <li><a href="#skills" class="text-slate-300 hover:text-electric-blue hover:text-neon transition duration-300">Expertise</a></li>
+                    <li><a href="#experiences" class="text-slate-300 hover:text-electric-blue hover:text-neon transition duration-300">Impact</a></li>
+                    <li><a href="#projects" class="text-slate-300 hover:text-electric-blue hover:text-neon transition duration-300">Projects</a></li>
+                    <li><a href="#contact" class="text-slate-300 hover:text-electric-blue hover:text-neon transition duration-300">Connect</a></li>
                 </ul>
             </nav>
         </div>
@@ -156,138 +138,168 @@
 
     <main class="pt-24">
         
-        <!-- === 1. Hero Section (Home) === -->
-        <section id="hero" class="min-h-screen flex items-center justify-center p-8">
-            <div class="max-w-6xl mx-auto flex flex-col-reverse lg:flex-row items-center lg:space-x-12">
+        <!-- === 1. Hero Section (Home) - High Impact Introduction === -->
+        <section id="hero" class="min-h-screen flex items-center justify-center p-8 relative">
+            <div class="max-w-6xl mx-auto flex flex-col-reverse lg:flex-row items-center lg:space-x-16">
                 
                 <!-- Text Content -->
                 <div class="lg:w-1/2 mt-12 lg:mt-0 text-center lg:text-left scroll-fade">
-                    <p class="text-cyan-400 text-sm font-semibold uppercase tracking-widest mb-3">Assalamu Alaikum, I'm</p>
-                    <h1 class="text-6xl lg:text-7xl font-extrabold mb-4 leading-tight text-white">
-                        Muhammad Areeb <span class="text-cyan-400">Rizwan</span>
+                    <p class="text-electric-blue text-sm font-extrabold uppercase tracking-widest mb-3">
+                        <span class="text-neon">SYSTEMS OPTIMIZATION</span> FOCUSED
+                    </p>
+                    <h1 class="text-6xl lg:text-8xl font-black mb-4 leading-none text-white text-neon">
+                        Muhammad <span class="text-electric-blue">Rizwan</span>
                     </h1>
-                    <p class="text-xl font-light text-slate-300 mb-6">
-                        Mechanical Engineer | Research Specialist | Technical Leader
+                    <p class="text-2xl font-light text-slate-400 mb-6">
+                        Mechanical Engineer | Technical Lead | R&D Strategist
                     </p>
-                    <p class="text-base text-slate-400 max-w-lg mb-8">
-                        Driving **technological advancement** through meticulous engineering design, strategic innovation, and demonstrated leadership in complex mechanical systems and R&D environments.
+                    <p class="text-base text-slate-400 max-w-lg mb-10 border-l-4 border-electric-blue pl-4 italic">
+                        "I engineer the future of efficiency, blending deep mechanical principles with strategic R&D to solve high-stakes industrial challenges."
                     </p>
-                    <div class="flex justify-center lg:justify-start space-x-4">
-                        <a href="#projects" class="px-6 py-3 bg-cyan-500 text-gray-900 font-bold rounded-lg shadow-lg hover:bg-cyan-400 transition duration-300 transform hover:scale-105">
-                            View Impact
+                    <div class="flex justify-center lg:justify-start space-x-6">
+                        <a href="#projects" class="px-8 py-4 bg-electric-blue text-gray-900 font-extrabold rounded-xl shadow-neon transition duration-500 transform hover:scale-105">
+                            View Prototypes
                         </a>
-                        <a href="#contact" class="px-6 py-3 border border-cyan-500 text-cyan-400 font-bold rounded-lg hover:bg-cyan-500 hover:text-gray-900 transition duration-300">
-                            Connect Now
+                        <a href="#contact" class="px-8 py-4 border-2 border-electric-blue text-electric-blue font-extrabold rounded-xl hover:bg-electric-blue/10 transition duration-300">
+                            Access CV
                         </a>
                     </div>
                 </div>
                 
-                <!-- Avatar Section (The Blending Fix) -->
+                <!-- Avatar Section (Neon Glow) -->
                 <div class="lg:w-1/2 flex justify-center scroll-fade" data-delay="300">
-                    <div class="avatar-glow shadow-2xl shadow-cyan-500/30">
+                    <div id="avatar-container">
                         <!-- 
-                            IMPORTANT: Replace the 'src' attribute below with the actual path 
-                            to your professional portrait image (e.g., assets/images/avatar.jpg). 
+                            NOTE: Update the 'src' attribute below to your actual image path 
+                            (e.g., assets/images/avatar.jpg) once you upload it to your GitHub repo.
                         -->
-                        <img src="https://placehold.co/320x320/0F172A/22D3EE?text=Areeb+Rizwan" 
+                        <img src="https://placehold.co/300x300/030712/06B6D4?text=Areeb+Rizwan" 
                              alt="Muhammad Areeb Rizwan Professional Portrait" 
                              id="avatar-img"
-                             onerror="this.onerror=null; this.src='https://placehold.co/320x320/0F172A/94A3B8?text=Areeb';" 
+                             onerror="this.onerror=null; this.src='https://placehold.co/300x300/030712/94A3B8?text=MAR';" 
                         >
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- === 2. Skills & Tech Stack Section === -->
-        <section id="skills" class="py-20 bg-slate-900/80">
+        <!-- === 2. Skills & Tech Stack Section - Futuristic Grid === -->
+        <section id="skills" class="py-24 bg-gray-900/50 border-t border-b border-electric-blue/10">
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                <h2 class="text-4xl font-bold text-center mb-16 text-white scroll-fade">
-                    Core <span class="text-cyan-400">Expertise</span> & Technologies
+                <h2 class="text-5xl font-extrabold text-center mb-16 text-white scroll-fade">
+                    Digital <span class="text-electric-blue text-neon">Toolbox</span> & Core Competencies
                 </h2>
                 
-                <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-6">
-                    <!-- Skill Cards with Glassmorphism and Hover Glow -->
-                    <div class="scroll-fade bg-gray-800/70 backdrop-blur-sm p-6 rounded-xl text-center border-t-2 border-cyan-400/0 hover:border-cyan-400 transition duration-500 hover:shadow-2xl hover:shadow-cyan-500/30">
-                        <svg class="w-10 h-10 mx-auto mb-3 text-cyan-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
-                        <p class="text-white font-semibold">SolidWorks / CAD</p>
+                <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
+                    <!-- Dynamic Skill Cards -->
+                    <!-- Pattern: Dark background, light border, neon shadow on hover -->
+                    
+                    <!-- Skill 1: CAD -->
+                    <div class="scroll-fade bg-gray-900/70 p-8 rounded-xl text-center border-2 border-gray-700 hover:border-electric-blue shadow-lg hover:shadow-neon transition duration-400">
+                        <svg class="w-10 h-10 mx-auto mb-4 text-electric-blue text-neon" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
+                        <p class="text-white font-bold text-lg">SolidWorks & CAD</p>
+                        <p class="text-sm text-slate-500">Precision Modeling</p>
                     </div>
                     
-                    <div class="scroll-fade bg-gray-800/70 backdrop-blur-sm p-6 rounded-xl text-center border-t-2 border-cyan-400/0 hover:border-cyan-400 transition duration-500 hover:shadow-2xl hover:shadow-cyan-500/30" data-delay="200">
-                        <svg class="w-10 h-10 mx-auto mb-3 text-cyan-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14"></path></svg>
-                        <p class="text-white font-semibold">ANSYS / FEA</p>
+                    <!-- Skill 2: FEA/CFD -->
+                    <div class="scroll-fade bg-gray-900/70 p-8 rounded-xl text-center border-2 border-gray-700 hover:border-electric-blue shadow-lg hover:shadow-neon transition duration-400" data-delay="100">
+                         <svg class="w-10 h-10 mx-auto mb-4 text-electric-blue text-neon" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14"></path></svg>
+                        <p class="text-white font-bold text-lg">ANSYS Simulation</p>
+                        <p class="text-sm text-slate-500">FEA/CFD Optimization</p>
                     </div>
                     
-                    <div class="scroll-fade bg-gray-800/70 backdrop-blur-sm p-6 rounded-xl text-center border-t-2 border-cyan-400/0 hover:border-cyan-400 transition duration-500 hover:shadow-2xl hover:shadow-cyan-500/30" data-delay="300">
-                        <svg class="w-10 h-10 mx-auto mb-3 text-cyan-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v3"></path></svg>
-                        <p class="text-white font-semibold">R&D / Heat Transfer</p>
+                    <!-- Skill 3: Materials -->
+                    <div class="scroll-fade bg-gray-900/70 p-8 rounded-xl text-center border-2 border-gray-700 hover:border-electric-blue shadow-lg hover:shadow-neon transition duration-400" data-delay="200">
+                        <svg class="w-10 h-10 mx-auto mb-4 text-electric-blue text-neon" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"></path></svg>
+                        <p class="text-white font-bold text-lg">Advanced Composites</p>
+                        <p class="text-sm text-slate-500">Material Science R&D</p>
                     </div>
                     
-                    <div class="scroll-fade bg-gray-800/70 backdrop-blur-sm p-6 rounded-xl text-center border-t-2 border-cyan-400/0 hover:border-cyan-400 transition duration-500 hover:shadow-2xl hover:shadow-cyan-500/30" data-delay="400">
-                        <svg class="w-10 h-10 mx-auto mb-3 text-cyan-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
-                        <p class="text-white font-semibold">Composite Materials</p>
+                    <!-- Skill 4: Prototyping -->
+                    <div class="scroll-fade bg-gray-900/70 p-8 rounded-xl text-center border-2 border-gray-700 hover:border-electric-blue shadow-lg hover:shadow-neon transition duration-400" data-delay="300">
+                        <svg class="w-10 h-10 mx-auto mb-4 text-electric-blue text-neon" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20h-2m2 0h-2M15 4h-2m2 0h-2m-8 6h3v-2H7v2m0 0H4v2h3v-2m4 0h3v-2H11v2m0 0H8v2h3v-2m10-2v2h3v-2h-3zM7 4h3v-2H7v2m0 0h-3v2h3v-2m7 12h3v-2h-3v2m0 0h-3v2h3v-2"></path></svg>
+                        <p class="text-white font-bold text-lg">Rapid Prototyping</p>
+                        <p class="text-sm text-slate-500">Additive Manufacturing</p>
                     </div>
-                    
-                    <div class="scroll-fade bg-gray-800/70 backdrop-blur-sm p-6 rounded-xl text-center border-t-2 border-cyan-400/0 hover:border-cyan-400 transition duration-500 hover:shadow-2xl hover:shadow-cyan-500/30" data-delay="500">
-                        <svg class="w-10 h-10 mx-auto mb-3 text-cyan-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20h-2m2 0h-2M15 4h-2m2 0h-2m-8 6h3v-2H7v2m0 0H4v2h3v-2m4 0h3v-2H11v2m0 0H8v2h3v-2m10-2v2h3v-2h-3zM7 4h3v-2H7v2m0 0h-3v2h3v-2m7 12h3v-2h-3v2m0 0h-3v2h3v-2"></path></svg>
-                        <p class="text-white font-semibold">Team Leadership</p>
+
+                    <!-- Skill 5: Leadership -->
+                    <div class="scroll-fade bg-gray-900/70 p-8 rounded-xl text-center border-2 border-gray-700 hover:border-electric-blue shadow-lg hover:shadow-neon transition duration-400" data-delay="400">
+                        <svg class="w-10 h-10 mx-auto mb-4 text-electric-blue text-neon" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H9a1 1 0 01-1-1v-1a2 2 0 012-2h4a2 2 0 012 2v1a1 1 0 01-1 1zM21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9a9 9 0 01-9 9m0-9a9 9 0 009-9"></path></svg>
+                        <p class="text-white font-bold text-lg">Technical Leadership</p>
+                        <p class="text-sm text-slate-500">Team & Project Mgmt</p>
                     </div>
-                    
-                    <div class="scroll-fade bg-gray-800/70 backdrop-blur-sm p-6 rounded-xl text-center border-t-2 border-cyan-400/0 hover:border-cyan-400 transition duration-500 hover:shadow-2xl hover:shadow-cyan-500/30" data-delay="600">
-                        <svg class="w-10 h-10 mx-auto mb-3 text-cyan-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
-                        <p class="text-white font-semibold">Rapid Prototyping</p>
+
+                     <!-- Skill 6: Robotics/Automation -->
+                    <div class="scroll-fade bg-gray-900/70 p-8 rounded-xl text-center border-2 border-gray-700 hover:border-electric-blue shadow-lg hover:shadow-neon transition duration-400" data-delay="500">
+                        <svg class="w-10 h-10 mx-auto mb-4 text-electric-blue text-neon" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a8 8 0 01-6.22-3m6.22 3a8 8 0 006.22-3m-12.44 0H3m6.22 0a8 8 0 006.22-3M12 7h.01"></path></svg>
+                        <p class="text-white font-bold text-lg">Robotics/PLC</p>
+                        <p class="text-sm text-slate-500">Industrial Automation</p>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- === 3. Experience Section (Impact Timeline) === -->
-        <section id="experiences" class="py-24 bg-slate-900/50">
+        <!-- === 3. Experience Section - Data Stream Timeline === -->
+        <section id="experiences" class="py-24">
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                <h2 class="text-4xl font-bold text-center mb-16 text-white scroll-fade">
-                    Career <span class="text-cyan-400">Milestones</span> & Impact
+                <h2 class="text-5xl font-extrabold text-center mb-16 text-white scroll-fade">
+                    <span class="text-electric-blue text-neon">Impact</span> Registry
                 </h2>
                 
-                <div class="timeline max-w-4xl mx-auto">
+                <div class="relative max-w-4xl mx-auto border-l-4 border-electric-blue/30 pt-4">
+                    <!-- Dynamic Timeline Items -->
                     
-                    <!-- Milestone 1 (Glassmorphism + Hover) -->
-                    <div class="timeline-item scroll-fade">
-                        <div class="bg-gray-800/70 backdrop-blur-sm p-6 rounded-lg shadow-xl hover:shadow-cyan-500/20 transition duration-300 transform hover:translate-y-[-5px] border border-transparent hover:border-cyan-600/30">
-                            <span class="text-cyan-400 font-semibold text-sm uppercase tracking-wider">Jan 2023 - Present</span>
-                            <h3 class="text-2xl font-bold mt-2 text-white">Lead Mechanical Design Engineer</h3>
-                            <p class="text-lg text-slate-300 mb-3">Precision Manufacturing Co., Dubai</p>
-                            <ul class="list-disc list-inside space-y-2 text-slate-400">
-                                <li>**Spearheaded** the design and successful commissioning of a $5M automated production line, resulting in a **35% increase** in throughput efficiency.</li>
-                                <li>Implemented advanced **Finite Element Analysis (FEA)** simulations that reduced material wastage by 18% across three flagship products.</li>
-                                <li>Led a cross-functional team of 6 engineers, mentoring junior staff in CAD modeling and system optimization best practices.</li>
+                    <!-- Item 1 -->
+                    <div class="timeline-item relative pl-10 pb-16 scroll-fade">
+                        <!-- Neon Dot -->
+                        <div class="absolute left-[-15px] top-4 w-8 h-8 rounded-full bg-electric-blue shadow-neon transition duration-500 z-10 flex items-center justify-center">
+                            <svg class="w-4 h-4 text-deep-space" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4a1 1 0 00.293.707l2.828 2.829a1 1 0 101.415-1.415L11 9.586V6z" clip-rule="evenodd"></path></svg>
+                        </div>
+                        
+                        <div class="bg-gray-800/80 backdrop-blur-sm p-6 rounded-lg shadow-xl border-t-4 border-electric-blue/50 hover:border-electric-blue transition duration-300 transform hover:scale-[1.01]">
+                            <span class="text-electric-blue font-bold text-sm uppercase tracking-wider">2023 - Present | Manufacturing</span>
+                            <h3 class="text-3xl font-bold mt-2 text-white">Lead Mechanical Design Engineer</h3>
+                            <p class="text-lg text-slate-400 mb-4">Precision Manufacturing Co.</p>
+                            <ul class="list-disc list-outside space-y-2 text-slate-400 ml-5 text-base">
+                                <li>**Optimized** production line design, boosting throughput by **+35%** (>$2M annual savings).</li>
+                                <li>Pioneered FEA-driven material reduction, achieving **18% decrease** in wastage.</li>
+                                <li>Mentored engineering team, enhancing overall design quality and documentation.</li>
                             </ul>
                         </div>
                     </div>
                     
-                    <!-- Milestone 2 (Glassmorphism + Hover) -->
-                    <div class="timeline-item scroll-fade">
-                        <div class="bg-gray-800/70 backdrop-blur-sm p-6 rounded-lg shadow-xl hover:shadow-cyan-500/20 transition duration-300 transform hover:translate-y-[-5px] border border-transparent hover:border-cyan-600/30">
-                            <span class="text-cyan-400 font-semibold text-sm uppercase tracking-wider">Aug 2020 - Dec 2022</span>
-                            <h3 class="text-2xl font-bold mt-2 text-white">Research & Development Associate</h3>
-                            <p class="text-lg text-slate-300 mb-3">University Advanced Materials Lab, Abu Dhabi</p>
-                            <ul class="list-disc list-inside space-y-2 text-slate-400">
-                                <li>Authored and co-authored **4 peer-reviewed papers** on novel heat transfer solutions, improving thermal dissipation rates by up to 25%.</li>
-                                <li>Managed a research budget of $50k for testing and prototyping next-generation composite materials for aerospace applications.</li>
-                                <li>Developed custom instrumentation for real-time data acquisition, reducing experimental setup time by 40%.</li>
+                    <!-- Item 2 -->
+                    <div class="timeline-item relative pl-10 pb-16 scroll-fade">
+                        <div class="absolute left-[-15px] top-4 w-8 h-8 rounded-full bg-electric-blue shadow-neon transition duration-500 z-10 flex items-center justify-center">
+                            <svg class="w-4 h-4 text-deep-space" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M7 3a1 1 0 000 2h6a1 1 0 100-2H7zM4 7a1 1 0 011-1h10a1 1 0 110 2H5a1 1 0 01-1-1zM6 10a1 1 0 000 2h8a1 1 0 100-2H6zM7 14a1 1 0 100 2h6a1 1 0 100-2H7z"></path></svg>
+                        </div>
+                        
+                        <div class="bg-gray-800/80 backdrop-blur-sm p-6 rounded-lg shadow-xl border-t-4 border-electric-blue/50 hover:border-electric-blue transition duration-300 transform hover:scale-[1.01]">
+                            <span class="text-electric-blue font-bold text-sm uppercase tracking-wider">2020 - 2022 | Research & Academia</span>
+                            <h3 class="text-3xl font-bold mt-2 text-white">Research & Development Associate</h3>
+                            <p class="text-lg text-slate-400 mb-4">University Advanced Materials Lab</p>
+                            <ul class="list-disc list-outside space-y-2 text-slate-400 ml-5 text-base">
+                                <li>Published **4 high-impact papers** on thermal dissipation in composites.</li>
+                                <li>Secured and managed **$50k research grant** for novel materials testing.</li>
+                                <li>Designed custom DAQ (Data Acquisition) systems, **reducing lab setup time by 40%**.</li>
                             </ul>
                         </div>
                     </div>
                     
-                    <!-- Milestone 3 (Glassmorphism + Hover) -->
-                    <div class="timeline-item scroll-fade">
-                        <div class="bg-gray-800/70 backdrop-blur-sm p-6 rounded-lg shadow-xl hover:shadow-cyan-500/20 transition duration-300 transform hover:translate-y-[-5px] border border-transparent hover:border-cyan-600/30">
-                            <span class="text-cyan-400 font-semibold text-sm uppercase tracking-wider">2018 - 2020</span>
-                            <h3 class="text-2xl font-bold mt-2 text-white">Student Entrepreneurship Initiative</h3>
-                            <p class="text-lg text-slate-300 mb-3">Founding Partner, Tech Solutions Startup</p>
-                            <ul class="list-disc list-inside space-y-2 text-slate-400">
-                                <li>Co-founded a successful venture focused on sustainable waste management systems, securing initial seed funding of $10k.</li>
-                                <li>Oversaw the prototype development lifecycle, from ideation to functional MVP (Minimum Viable Product).</li>
-                                <li>Gained critical experience in intellectual property filing and pitch presentation to early-stage investors.</li>
+                    <!-- Item 3 -->
+                    <div class="timeline-item relative pl-10 pb-4 scroll-fade">
+                        <div class="absolute left-[-15px] top-4 w-8 h-8 rounded-full bg-electric-blue shadow-neon transition duration-500 z-10 flex items-center justify-center">
+                            <svg class="w-4 h-4 text-deep-space" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M13 6a3 3 0 11-6 0 3 3 0 016 0zM18 8a2 2 0 11-4 0 2 2 0 014 0zM14 15a4 4 0 00-8 0v3h8v-3zM6 8a2 2 0 11-4 0 2 2 0 014 0zM16 18H4a1 1 0 01-1-1v-1a4 4 0 014-4h10a4 4 0 014 4v1a1 1 0 01-1 1z"></path></svg>
+                        </div>
+                        
+                        <div class="bg-gray-800/80 backdrop-blur-sm p-6 rounded-lg shadow-xl border-t-4 border-electric-blue/50 hover:border-electric-blue transition duration-300 transform hover:scale-[1.01]">
+                            <span class="text-electric-blue font-bold text-sm uppercase tracking-wider">2018 - 2020 | Entrepreneurship</span>
+                            <h3 class="text-3xl font-bold mt-2 text-white">Founding Partner</h3>
+                            <p class="text-lg text-slate-400 mb-4">Sustainable Tech Solutions Startup</p>
+                            <ul class="list-disc list-outside space-y-2 text-slate-400 ml-5 text-base">
+                                <li>Co-founded and drove the technical vision for a waste management system startup.</li>
+                                <li>Secured **initial seed funding** through compelling technical pitch presentations.</li>
+                                <li>Oversaw full prototype build cycle (CAD to physical MVP).</li>
                             </ul>
                         </div>
                     </div>
@@ -296,30 +308,86 @@
             </div>
         </section>
 
-        <!-- === 4. Placeholder Sections for Navigation === -->
-        <section id="projects" class="h-96 flex items-center justify-center p-8 bg-gray-900/80">
-            <h2 class="text-4xl font-bold text-cyan-400">Projects Section Content Goes Here</h2>
+        <!-- === 4. Projects Section - Holographic Grid Placeholder === -->
+        <section id="projects" class="py-24 bg-gray-900/50 border-t border-b border-electric-blue/10">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                 <h2 class="text-5xl font-extrabold text-center mb-16 text-white scroll-fade">
+                    Featured <span class="text-electric-blue text-neon">Projects</span> & Case Studies
+                </h2>
+
+                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    
+                    <!-- Project Card 1 -->
+                    <div class="scroll-fade bg-gray-900/70 p-6 rounded-xl border border-electric-blue/30 shadow-neon-dark hover:shadow-neon-light transition duration-500">
+                        <h3 class="text-2xl font-bold text-electric-blue text-neon mb-2">Automated Weld Cell Redesign</h3>
+                        <p class="text-slate-400 mb-4">Industrial Automation | FEA</p>
+                        <p class="text-slate-500 mb-4 text-sm">Case study on optimizing robot path planning and weld fixture design using ANSYS for increased precision and 99.8% uptime.</p>
+                        <a href="#" class="inline-flex items-center text-sm font-semibold text-white hover:text-electric-blue transition">
+                            View Report (Placeholder)
+                            <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+                        </a>
+                    </div>
+
+                    <!-- Project Card 2 -->
+                    <div class="scroll-fade bg-gray-900/70 p-6 rounded-xl border border-electric-blue/30 shadow-neon-dark hover:shadow-neon-light transition duration-500" data-delay="100">
+                        <h3 class="text-2xl font-bold text-electric-blue text-neon mb-2">Thermal Management System (TMS)</h3>
+                        <p class="text-slate-400 mb-4">R&D | Heat Transfer</p>
+                        <p class="text-slate-500 mb-4 text-sm">Development of a novel liquid cooling system for high-density electronics, achieving a 25% thermal resistance reduction validated by CFD.</p>
+                        <a href="#" class="inline-flex items-center text-sm font-semibold text-white hover:text-electric-blue transition">
+                            View Report (Placeholder)
+                            <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+                        </a>
+                    </div>
+                    
+                    <!-- Project Card 3 -->
+                    <div class="scroll-fade bg-gray-900/70 p-6 rounded-xl border border-electric-blue/30 shadow-neon-dark hover:shadow-neon-light transition duration-500" data-delay="200">
+                        <h3 class="text-2xl font-bold text-electric-blue text-neon mb-2">Composite Drone Frame Prototyping</h3>
+                        <p class="text-slate-400 mb-4">Materials Science | Prototyping</p>
+                        <p class="text-slate-500 mb-4 text-sm">The end-to-end process of designing, manufacturing (3D printing/layup), and testing a high-strength, low-weight airframe prototype.</p>
+                        <a href="#" class="inline-flex items-center text-sm font-semibold text-white hover:text-electric-blue transition">
+                            View Report (Placeholder)
+                            <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+                        </a>
+                    </div>
+                </div>
+            </div>
         </section>
-        
-        <section id="contact" class="h-64 flex items-center justify-center p-8">
-            <h2 class="text-4xl font-bold text-cyan-400">Contact Form & Details Here</h2>
+
+        <!-- === 5. Contact Section - Final Call to Action === -->
+        <section id="contact" class="py-24">
+            <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center scroll-fade">
+                <h2 class="text-5xl font-extrabold mb-4 text-white">
+                    <span class="text-electric-blue text-neon">Let's Connect</span> & Build the Future
+                </h2>
+                <p class="text-slate-400 text-lg mb-8 max-w-2xl mx-auto">
+                    I am actively seeking strategic roles where I can drive innovation in mechanical engineering and R&D. Get in touch to discuss potential collaborations.
+                </p>
+                <div class="flex justify-center space-x-6">
+                    <a href="mailto:your.email@example.com" class="px-10 py-4 bg-electric-blue text-gray-900 font-extrabold rounded-xl shadow-neon transition duration-500 transform hover:scale-105">
+                        Email Me Now
+                    </a>
+                    <a href="https://linkedin.com/in/yourprofile" target="_blank" class="px-10 py-4 border-2 border-electric-blue text-electric-blue font-extrabold rounded-xl hover:bg-electric-blue/10 transition duration-300">
+                        LinkedIn Profile
+                    </a>
+                </div>
+            </div>
         </section>
 
     </main>
 
     <!-- Footer -->
-    <footer class="bg-slate-900 border-t border-cyan-500/20 py-6 text-center text-slate-400">
-        <p>&copy; 2025 Muhammad Areeb Rizwan. All Rights Reserved. | Engineered for Impact.</p>
+    <footer class="bg-gray-900/50 border-t border-electric-blue/20 py-6 text-center text-slate-500">
+        <p class="text-sm">&copy; 2025 Muhammad Areeb Rizwan. All Rights Reserved. | Designed for High Impact.</p>
     </footer>
 
-    <!-- JavaScript for Scroll Animations & Header Visibility -->
+    <!-- JavaScript for Scroll Animations & Smooth Scroll -->
     <script>
         // Simple Intersection Observer for scroll-fade animations
         const faders = document.querySelectorAll('.scroll-fade');
 
         const appearOptions = {
-            threshold: 0.2,
-            rootMargin: "0px 0px -100px 0px" // Start appearing 100px before reaching the bottom
+            threshold: 0.1, // Element becomes visible when 10% is in viewport
+            rootMargin: "0px 0px -50px 0px"
         };
 
         const appearOnScroll = new IntersectionObserver(function(entries, appearOnScroll) {
@@ -327,9 +395,12 @@
                 if (!entry.isIntersecting) {
                     return;
                 } else {
-                    entry.target.classList.add('visible');
-                    // Stop observing once visible to save performance
-                    appearOnScroll.unobserve(entry.target); 
+                    // Apply delay based on data-delay attribute for staggered animation
+                    const delay = entry.target.getAttribute('data-delay') || 0;
+                    setTimeout(() => {
+                        entry.target.classList.add('visible');
+                        appearOnScroll.unobserve(entry.target); 
+                    }, delay);
                 }
             });
         }, appearOptions);
@@ -338,22 +409,29 @@
             appearOnScroll.observe(fader);
         });
 
-        // Add class to ensure first elements are visible immediately
+        // Ensure initial elements are visible right away
         document.addEventListener('DOMContentLoaded', () => {
-            document.querySelector('#hero .scroll-fade').classList.add('visible');
-            document.querySelector('#hero .lg\\:w-1\\/2:last-child .scroll-fade').classList.add('visible');
+            // Force first section elements to show immediately
+            document.querySelectorAll('#hero .scroll-fade').forEach(el => el.classList.add('visible'));
         });
 
         // Smooth Scrolling for all internal anchor links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
-                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+                
+                // Calculate position to account for the fixed header height
+                const headerHeight = document.getElementById('header').offsetHeight;
+                const targetPosition = targetElement.offsetTop - headerHeight - 20; // -20 for extra padding
+                
+                window.scrollTo({
+                    top: targetPosition,
                     behavior: 'smooth'
                 });
             });
         });
-        
     </script>
 </body>
 </html>
