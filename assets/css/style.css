@@ -32,35 +32,36 @@ html, body { width:100%; height:100%; font-family: 'Poppins', sans-serif; overfl
   perspective: 1000px; 
 }
 
-/* Avatar */
+/* Avatar Container FIX: Removed background and padding to eliminate the large white oval */
 .avatar-container { 
   position: relative; 
-  z-index:3; /* Increased Z-index to ensure visibility */
-  /* Reduced padding for a tighter halo */
-  padding: 10px; 
+  z-index:3;
+  padding: 0; 
   border-radius: 50%;
-  /* Subtle radial background glow for blending */
-  background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0) 70%); 
+  background: none; 
 }
 
+/* Avatar FIX: Adjusted shadows for blending and removed hard borders */
 #avatar {
-  /* Using the circular image you requested */
+  /* Ensure it fits the circular space */
   width: 180px;
   height: 180px; 
-  object-fit: cover; /* Ensures the image fills the circle */
+  object-fit: cover;
   border-radius: 50%;
   animation: float 3s ease-in-out infinite;
+  
   /* Enhanced shadow/glow for a floating, blended look */
-  box-shadow: 0 0 0 5px rgba(255, 255, 255, 0.4), /* Faint white aura for ethereal look */
-              0 15px 35px rgba(0, 0, 0, 0.6); /* Deep shadow for 3D depth */
-  border: 4px solid rgba(255, 255, 255, 0.8); 
+  box-shadow: 0 0 30px 10px rgba(255, 255, 255, 0.8), /* Ethereal white glow for blending */
+              0 15px 40px rgba(0, 0, 0, 0.4); /* Soft shadow for depth */
+              
+  border: none; /* Removed hard border */
 }
 @keyframes float {
   0%,100% { transform: translateY(0px) rotateX(0deg); }
-  50% { transform: translateY(-8px) rotateX(2deg); } /* Reduced float distance and subtle tilt */
+  50% { transform: translateY(-8px) rotateX(2deg); } /* Subtle float and tilt */
 }
 
-/* Small clouds around avatar (Now more subtle and ethereal) */
+/* Small clouds around avatar (Ethereal and subtle) */
 .avatar-cloud {
   width: 50px; 
   height: 25px;
@@ -80,7 +81,7 @@ h1 {
     font-family: 'Poppins', sans-serif;
     font-size: 3rem; 
     margin-top:20px; 
-    color:#fff; 
+    color:#fff; /* White text for contrast */
     text-shadow: 1px 1px 5px rgba(0,0,0,0.4);
 }
 p { 
@@ -110,7 +111,7 @@ p {
   cursor:pointer;
   box-shadow: 0 8px 15px rgba(0,0,0,0.25);
   transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94), box-shadow 0.4s;
-  transform: rotateZ(-1deg); 
+  transform: rotateZ(-1deg); /* Subtle initial tilt */
 }
 .cloud:hover { 
     transform: translateY(-15px) scale(1.15) rotateZ(0deg); 
