@@ -3,506 +3,172 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Enhanced Portfolio Script</title>
-    <style>
-        /* Base styles */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            line-height: 1.6;
-            color: #333;
-            background: #f9f9f9;
-            overflow-x: hidden;
-        }
-        
-        /* Mobile menu styles */
-        .mobile-menu {
-            position: fixed;
-            top: 0;
-            right: -100%;
-            width: 80%;
-            max-width: 300px;
-            height: 100vh;
-            background: #fff;
-            box-shadow: -5px 0 15px rgba(0,0,0,0.1);
-            transition: right 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-            z-index: 1000;
-            padding: 2rem;
-        }
-        
-        .mobile-menu.open {
-            right: 0;
-        }
-        
-        .close-menu {
-            position: absolute;
-            top: 1rem;
-            right: 1rem;
-            background: none;
-            border: none;
-            font-size: 1.5rem;
-            cursor: pointer;
-            color: #555;
-        }
-        
-        .mobile-nav a {
-            display: block;
-            padding: 0.75rem 0;
-            text-decoration: none;
-            color: #333;
-            font-weight: 500;
-            border-bottom: 1px solid #f0f0f0;
-            transition: color 0.3s;
-        }
-        
-        .mobile-nav a:hover {
-            color: #4a6cf7;
-        }
-        
-        /* Scroll fade animation */
-        .scroll-fade {
-            opacity: 0;
-            transform: translateY(30px);
-            transition: opacity 0.6s ease, transform 0.6s ease;
-        }
-        
-        .scroll-fade.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-        
-        /* Skills section */
-        .skills-container {
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 2rem;
-        }
-        
-        .skill-item {
-            margin-bottom: 1.5rem;
-        }
-        
-        .skill-name {
-            display: flex;
-            justify-content: space-between;
-            margin-bottom: 0.5rem;
-        }
-        
-        .skill-progress {
-            height: 8px;
-            background: #e0e0e0;
-            border-radius: 4px;
-            overflow: hidden;
-        }
-        
-        .skill-progress-bar {
-            height: 100%;
-            width: 0;
-            background: linear-gradient(90deg, #4a6cf7, #6a11cb);
-            border-radius: 4px;
-            transition: width 1.5s cubic-bezier(0.22, 0.61, 0.36, 1);
-        }
-        
-        /* Back to top button */
-        .back-to-top {
-            position: fixed;
-            bottom: 2rem;
-            right: 2rem;
-            width: 50px;
-            height: 50px;
-            background: #4a6cf7;
-            color: white;
-            border: none;
-            border-radius: 50%;
-            cursor: pointer;
-            opacity: 0;
-            visibility: hidden;
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 12px rgba(74, 108, 247, 0.3);
-            z-index: 99;
-        }
-        
-        .back-to-top.visible {
-            opacity: 1;
-            visibility: visible;
-        }
-        
-        .back-to-top:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 6px 15px rgba(74, 108, 247, 0.4);
-        }
-        
-        /* Particles */
-        #particles-container {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            pointer-events: none;
-            z-index: -1;
-        }
-        
-        .particle {
-            position: absolute;
-            background: linear-gradient(135deg, #4a6cf7, #6a11cb);
-            border-radius: 50%;
-            opacity: 0.3;
-        }
-        
-        @keyframes float {
-            0% {
-                transform: translateY(0) rotate(0deg);
-                opacity: 0.3;
-            }
-            50% {
-                opacity: 0.6;
-            }
-            100% {
-                transform: translateY(-100vh) rotate(360deg);
-                opacity: 0;
-            }
-        }
-        
-        /* Demo sections for testing */
-        section {
-            min-height: 100vh;
-            padding: 4rem 2rem;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-        }
-        
-        h1, h2 {
-            margin-bottom: 1.5rem;
-            text-align: center;
-        }
-        
-        .mobile-menu-button {
-            position: fixed;
-            top: 1rem;
-            right: 1rem;
-            background: #4a6cf7;
-            color: white;
-            border: none;
-            padding: 0.5rem 1rem;
-            border-radius: 4px;
-            cursor: pointer;
-            z-index: 100;
-        }
-        
-        /* Demo content styles */
-        .demo-box {
-            background: white;
-            padding: 2rem;
-            border-radius: 8px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
-            margin: 1rem;
-            max-width: 600px;
-            width: 100%;
-        }
-    </style>
+    <title>Muhammad Areeb Rizwan | Mechanical Engineer</title>
+    <meta name="description" content="Mechanical Engineer specializing in innovative engineering solutions and technical leadership.">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <body>
-    <!-- Mobile menu button -->
-    <button class="mobile-menu-button" id="mobile-menu-button">Menu</button>
-    
-    <!-- Mobile menu -->
-    <div class="mobile-menu" id="mobile-menu">
-        <button class="close-menu" id="close-menu">×</button>
-        <nav class="mobile-nav">
-            <a href="#home">Home</a>
-            <a href="#about">About</a>
-            <a href="#skills">Skills</a>
-            <a href="#projects">Projects</a>
-            <a href="#contact">Contact</a>
+    <div class="app">
+        <!-- Sidebar Navigation -->
+        <nav class="sidebar">
+            <a href="#" class="logo">AR</a>
+            <ul class="nav-links">
+                <li><a href="#home" class="active">Home</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#experience">Experience</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
         </nav>
-    </div>
-    
-    <!-- Demo sections -->
-    <section id="home" style="background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);">
-        <div class="demo-box scroll-fade" data-delay="0">
-            <h1>Welcome Section</h1>
-            <p>This content fades in on scroll with no delay.</p>
-        </div>
-    </section>
-    
-    <section id="about" style="background: #f0f2f5;">
-        <div class="demo-box scroll-fade" data-delay="200">
-            <h2>About Section</h2>
-            <p>This content fades in on scroll with 200ms delay.</p>
-        </div>
-    </section>
-    
-    <section id="skills" style="background: #eef1f7;">
-        <div class="skills-container">
-            <h2 class="scroll-fade" data-delay="0">Skills</h2>
-            <div class="skill-item scroll-fade" data-delay="100">
-                <div class="skill-name">
-                    <span>HTML/CSS</span>
-                    <span>90%</span>
-                </div>
-                <div class="skill-progress">
-                    <div class="skill-progress-bar" data-width="90"></div>
-                </div>
-            </div>
-            <div class="skill-item scroll-fade" data-delay="200">
-                <div class="skill-name">
-                    <span>JavaScript</span>
-                    <span>85%</span>
-                </div>
-                <div class="skill-progress">
-                    <div class="skill-progress-bar" data-width="85"></div>
-                </div>
-            </div>
-            <div class="skill-item scroll-fade" data-delay="300">
-                <div class="skill-name">
-                    <span>UI/UX Design</span>
-                    <span>75%</span>
-                </div>
-                <div class="skill-progress">
-                    <div class="skill-progress-bar" data-width="75"></div>
-                </div>
-            </div>
-        </div>
-    </section>
-    
-    <section id="projects" style="background: #f0f2f5;">
-        <div class="demo-box scroll-fade" data-delay="0">
-            <h2>Projects Section</h2>
-            <p>This content fades in on scroll with no delay.</p>
-        </div>
-    </section>
-    
-    <section id="contact" style="background: #eef1f7;">
-        <div class="demo-box scroll-fade" data-delay="100">
-            <h2>Contact Section</h2>
-            <p>This content fades in on scroll with 100ms delay.</p>
-        </div>
-    </section>
-    
-    <!-- Back to top button -->
-    <button class="back-to-top" id="back-to-top" aria-label="Back to top">
-        ↑
-    </button>
-    
-    <!-- Particles container -->
-    <div id="particles-container"></div>
 
-    <script>
-        // Enhanced Portfolio Script
-        (function() {
-            'use strict';
-            
-            // ------------------------------------------------------------------
-            // 1. Mobile Menu - Enhanced with accessibility and smooth animations
-            // ------------------------------------------------------------------
-            const mobileMenuButton = document.getElementById('mobile-menu-button');
-            const closeMenuButton = document.getElementById('close-menu');
-            const mobileMenu = document.getElementById('mobile-menu');
-            const mobileNavLinks = mobileMenu.querySelectorAll('a');
-            const body = document.body;
-            
-            // Toggle mobile menu
-            function toggleMobileMenu() {
-                const isOpening = !mobileMenu.classList.contains('open');
-                
-                mobileMenu.classList.toggle('open');
-                
-                // Prevent body scroll when menu is open
-                if (isOpening) {
-                    body.style.overflow = 'hidden';
-                    closeMenuButton.focus(); // Focus the close button for accessibility
-                } else {
-                    body.style.overflow = '';
-                    mobileMenuButton.focus(); // Return focus to menu button
-                }
-            }
-            
-            // Close mobile menu
-            function closeMobileMenu() {
-                mobileMenu.classList.remove('open');
-                body.style.overflow = '';
-            }
-            
-            // Event listeners
-            mobileMenuButton.addEventListener('click', toggleMobileMenu);
-            closeMenuButton.addEventListener('click', closeMobileMenu);
-            
-            // Close menu when a link is clicked
-            mobileNavLinks.forEach(link => {
-                link.addEventListener('click', closeMobileMenu);
-            });
-            
-            // Close menu on escape key
-            document.addEventListener('keydown', (e) => {
-                if (e.key === 'Escape' && mobileMenu.classList.contains('open')) {
-                    closeMobileMenu();
-                }
-            });
-            
-            // ------------------------------------------------------------------
-            // 2. Scroll-Fade-In Observer - Optimized with requestAnimationFrame
-            // ------------------------------------------------------------------
-            const faders = document.querySelectorAll('.scroll-fade');
-            
-            // Use a single IntersectionObserver for better performance
-            const fadeObserver = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        const delay = entry.target.getAttribute('data-delay') || 0;
-                        
-                        // Use requestAnimationFrame for smoother animations
-                        requestAnimationFrame(() => {
-                            setTimeout(() => {
-                                entry.target.classList.add('visible');
-                                fadeObserver.unobserve(entry.target);
-                            }, parseInt(delay));
-                        });
-                    }
-                });
-            }, {
-                threshold: 0.1,
-                rootMargin: '0px 0px -50px 0px'
-            });
-            
-            // Observe all fade elements
-            faders.forEach(fader => fadeObserver.observe(fader));
-            
-            // ------------------------------------------------------------------
-            // 3. Skill Progress Bar Animation - Enhanced with performance
-            // ------------------------------------------------------------------
-            const skillProgressBars = document.querySelectorAll('.skill-progress-bar');
-            const skillSection = document.getElementById('skills');
-            
-            const skillObserver = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        // Animate each skill bar with a slight delay between them
-                        skillProgressBars.forEach((bar, index) => {
-                            setTimeout(() => {
-                                const width = bar.getAttribute('data-width');
-                                bar.style.width = width + '%';
-                            }, index * 150); // Stagger animation
-                        });
-                        
-                        skillObserver.unobserve(entry.target);
-                    }
-                });
-            }, { threshold: 0.3 });
-            
-            if (skillSection) {
-                skillObserver.observe(skillSection);
-            }
-            
-            // ------------------------------------------------------------------
-            // 4. Back to Top Button - Enhanced with smooth scroll and performance
-            // ------------------------------------------------------------------
-            const backToTopButton = document.getElementById('back-to-top');
-            let scrollTimeout;
-            
-            // Throttled scroll handler for better performance
-            function handleScroll() {
-                // Clear existing timeout
-                if (scrollTimeout) {
-                    cancelAnimationFrame(scrollTimeout);
-                }
-                
-                // Use requestAnimationFrame for smooth performance
-                scrollTimeout = requestAnimationFrame(() => {
-                    if (window.scrollY > 300) {
-                        backToTopButton.classList.add('visible');
-                    } else {
-                        backToTopButton.classList.remove('visible');
-                    }
-                });
-            }
-            
-            // Smooth scroll to top
-            function scrollToTop() {
-                window.scrollTo({
-                    top: 0,
-                    behavior: 'smooth'
-                });
-            }
-            
-            // Event listeners
-            window.addEventListener('scroll', handleScroll, { passive: true });
-            backToTopButton.addEventListener('click', scrollToTop);
-            
-            // ------------------------------------------------------------------
-            // 5. Particle Generator - Optimized with performance in mind
-            // ------------------------------------------------------------------
-            const particlesContainer = document.getElementById('particles-container');
-            const particles = [];
-            const numberOfParticles = 15; // Reduced for better performance
-            
-            function createParticle() {
-                const particle = document.createElement('div');
-                particle.classList.add('particle');
-                
-                // Random properties with constraints for performance
-                const size = Math.random() * 3 + 2; // 2px to 5px
-                const left = Math.random() * 100;
-                const top = Math.random() * 100;
-                const duration = Math.random() * 15 + 15; // 15s to 30s
-                const delay = Math.random() * 5;
-                
-                // Apply styles
-                particle.style.width = `${size}px`;
-                particle.style.height = `${size}px`;
-                particle.style.left = `${left}%`;
-                particle.style.top = `${top}%`;
-                particle.style.animation = `float ${duration}s linear infinite`;
-                particle.style.animationDelay = `-${delay}s`;
-                
-                particlesContainer.appendChild(particle);
-                particles.push(particle);
-                
-                // Remove particle after animation completes to prevent DOM bloat
-                setTimeout(() => {
-                    if (particle.parentNode) {
-                        particle.parentNode.removeChild(particle);
-                    }
-                }, duration * 1000);
-            }
-            
-            function initParticles() {
-                if (!particlesContainer) return;
-                
-                // Create initial particles
-                for (let i = 0; i < numberOfParticles; i++) {
-                    createParticle();
-                }
-                
-                // Continuously create new particles to replace expired ones
-                setInterval(() => {
-                    if (particles.length < numberOfParticles) {
-                        createParticle();
-                    }
-                }, 1000);
-            }
-            
-            // Initialize particles
-            initParticles();
-            
-            // ------------------------------------------------------------------
-            // 6. Performance optimization - Clean up on page unload
-            // ------------------------------------------------------------------
-            window.addEventListener('beforeunload', () => {
-                // Remove event listeners and observers
-                window.removeEventListener('scroll', handleScroll);
-                fadeObserver.disconnect();
-                skillObserver.disconnect();
-            });
-            
-        })();
-    </script>
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Hero Section -->
+            <section id="home" class="section">
+                <div class="hero">
+                    <div class="hero-content">
+                        <h4>Hi, my name is</h4>
+                        <h1>Muhammad Areeb Rizwan.</h1>
+                        <h2>I build engineering solutions.</h2>
+                        <p>
+                            I'm a mechanical engineer specializing in designing and implementing innovative 
+                            technical solutions. Currently, I focus on developing cutting-edge mechanical systems 
+                            and leading engineering projects from concept to completion.
+                        </p>
+                        <a href="#projects" class="btn btn-primary">View My Work</a>
+                    </div>
+                    <div class="hero-image">
+                        <div class="avatar">
+                            <img src="assets/images/avatar.png" alt="Muhammad Areeb Rizwan">
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Projects Section -->
+            <section id="projects" class="section">
+                <div>
+                    <div class="section-header">
+                        <div class="section-number">02.</div>
+                        <h2 class="section-title">Projects</h2>
+                        <div class="section-divider"></div>
+                    </div>
+                    
+                    <div class="projects-grid">
+                        <!-- Project 1 -->
+                        <div class="project-card">
+                            <div class="project-header">
+                                <div class="project-folder">
+                                    <i class="fas fa-folder"></i>
+                                </div>
+                                <div class="project-links">
+                                    <a href="#"><i class="fab fa-github"></i></a>
+                                    <a href="#"><i class="fas fa-external-link-alt"></i></a>
+                                </div>
+                            </div>
+                            <h3 class="project-title">Advanced Mechanical System</h3>
+                            <p class="project-description">
+                                Designed and implemented a sophisticated mechanical system with 40% efficiency improvement 
+                                over previous models. Integrated IoT sensors for real-time monitoring.
+                            </p>
+                            <div class="project-tech">
+                                <span>SolidWorks</span>
+                                <span>ANSYS</span>
+                                <span>MATLAB</span>
+                                <span>Python</span>
+                            </div>
+                        </div>
+
+                        <!-- Project 2 -->
+                        <div class="project-card">
+                            <div class="project-header">
+                                <div class="project-folder">
+                                    <i class="fas fa-folder"></i>
+                                </div>
+                                <div class="project-links">
+                                    <a href="#"><i class="fab fa-github"></i></a>
+                                    <a href="#"><i class="fas fa-external-link-alt"></i></a>
+                                </div>
+                            </div>
+                            <h3 class="project-title">Automated Manufacturing Process</h3>
+                            <p class="project-description">
+                                Developed automated manufacturing line reducing production time by 65% while maintaining 
+                                quality standards. Implemented predictive maintenance protocols.
+                            </p>
+                            <div class="project-tech">
+                                <span>AutoCAD</span>
+                                <span>PLC Programming</span>
+                                <span>Six Sigma</span>
+                                <span>Lean Manufacturing</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Experience Section -->
+            <section id="experience" class="section">
+                <div>
+                    <div class="section-header">
+                        <div class="section-number">03.</div>
+                        <h2 class="section-title">Experience</h2>
+                        <div class="section-divider"></div>
+                    </div>
+
+                    <div class="experience-tabs">
+                        <button class="tab active" data-job="job1">Company 1</button>
+                        <button class="tab" data-job="job2">Company 2</button>
+                        <button class="tab" data-job="job3">Company 3</button>
+                    </div>
+
+                    <div class="experience-content">
+                        <div id="job1" class="job-content active">
+                            <h3 class="job-title">Senior Mechanical Engineer</h3>
+                            <div class="job-company">Innovative Engineering Solutions</div>
+                            <div class="job-date">January 2022 - Present</div>
+                            <div class="job-description">
+                                <ul>
+                                    <li>Led design and development of mechanical systems for industrial applications</li>
+                                    <li>Managed engineering projects with budgets up to $2M</li>
+                                    <li>Improved system efficiency by 35% through innovative design approaches</li>
+                                    <li>Mentored junior engineers and conducted technical training sessions</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div id="job2" class="job-content">
+                            <h3 class="job-title">Mechanical Design Engineer</h3>
+                            <div class="job-company">Precision Manufacturing Inc.</div>
+                            <div class="job-date">June 2019 - December 2021</div>
+                            <div class="job-description">
+                                <ul>
+                                    <li>Designed and optimized mechanical components for manufacturing equipment</li>
+                                    <li>Reduced production costs by 20% through design improvements</li>
+                                    <li>Collaborated with cross-functional teams on product development</li>
+                                    <li>Implemented quality control procedures improving product reliability</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Contact Section -->
+            <section id="contact" class="section">
+                <div class="contact-content">
+                    <div class="section-number">04.</div>
+                    <h2 class="contact-title">Get In Touch</h2>
+                    <p class="contact-description">
+                        I'm currently available for new opportunities and interesting projects. 
+                        Whether you have a question or just want to say hello, I'll get back to you.
+                    </p>
+                    <a href="mailto:areeb@example.com" class="btn btn-primary">Say Hello</a>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <script src="assets/js/main.js"></script>
 </body>
 </html>
