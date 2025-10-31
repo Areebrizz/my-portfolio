@@ -2064,38 +2064,48 @@ button:active,
     width: 1040px;
     height: 600px;
     position: relative;
+    overflow: hidden; /* Important for clean edges */
   }
   
   .face .designer-img,
   .face .coder-img {
-    width: 520px; /* Half width each */
-    height: 600px;
+    width: 50%; /* Each takes exactly half */
+    height: 100%;
     position: absolute;
     top: 0;
     display: block;
     z-index: 1;
+    transition: all 0.3s ease; /* Smooth transition */
   }
   
   .face .designer-img {
     background: url(../images/formalpic111.png) center center / cover no-repeat;
-    left: 0; /* Start from left edge */
-    clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%); /* Show full left half */
+    left: 0;
   }
   
   .face .coder-img {
     background: url(../images/formalpic1112.png) center center / cover no-repeat;
-    right: 0; /* Start from right edge */
-    clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%); /* Show full right half */
+    right: 0;
   }
   
-  /* Hover effects */
-  .face:hover .designer-img {
-    clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%); /* Expand left image on hover */
-    width: 100%;
+  /* Hover effects - expand the hovered side */
+  .face .designer:hover ~ .designer-img {
+    width: 70%;
+    z-index: 2;
   }
   
-  .face:hover .coder-img {
-    clip-path: polygon(100% 0, 100% 0, 100% 100%, 100% 100%); /* Hide right image on hover */
+  .face .coder:hover ~ .coder-img {
+    width: 70%;
+    z-index: 2;
+  }
+  
+  /* Shrink the opposite side on hover */
+  .face .designer:hover ~ .coder-img {
+    width: 30%;
+  }
+  
+  .face .coder:hover ~ .designer-img {
+    width: 30%;
   }
   
   .face .designer-bg,
