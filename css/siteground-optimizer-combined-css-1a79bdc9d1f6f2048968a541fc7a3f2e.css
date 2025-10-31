@@ -2065,75 +2065,44 @@ button:active,
     height: 600px;
     position: relative;
   }
-  .face .coder,
-  .face .designer {
-    width: 520px;
-    height: 600px;
-    top: 0px;
-    position: absolute;
-  }
-  .face .coder h1,
-  .face .designer h1 {
-    font-size: 82px;
-    font-size: 8.2rem;
-  }
-  .face .coder .description,
-  .face .designer .description {
-    position: absolute;
-    top: 180px;
-    width: 290px;
-  }
-  .face .coder .arrow,
-  .face .designer .arrow {
-    width: 85px;
-    height: 140px;
-    background: url(../images/sprite.png) no-repeat;
-    display: block;
-    position: absolute;
-    top: 20px;
-  }
-  .face .coder {
-    text-align: left;
-    right: 0px;
-  }
-  .face .coder .description {
-    right: 0px;
-  }
-  .face .coder .arrow {
-    right: 0px;
-    background-position: 0px -751px;
-  }
-  .face .designer {
-    left: 0px;
-  }
-  .face .designer .description {
-    left: 0px;
-  }
-  .face .designer .arrow {
-    left: 0px;
-    background-position: 0px -892px;
-  }
+  
   .face .designer-img,
   .face .coder-img {
-    width: 420px;
+    width: 520px; /* Half width each */
     height: 600px;
     position: absolute;
     top: 0;
     display: block;
     z-index: 1;
   }
+  
   .face .designer-img {
     background: url(../images/formalpic111.png) center center / cover no-repeat;
-    left: 100px;
+    left: 0; /* Start from left edge */
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%); /* Show full left half */
   }
+  
   .face .coder-img {
     background: url(../images/formalpic1112.png) center center / cover no-repeat;
-    right: 100px;
+    right: 0; /* Start from right edge */
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%); /* Show full right half */
   }
+  
+  /* Hover effects */
+  .face:hover .designer-img {
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%); /* Expand left image on hover */
+    width: 100%;
+  }
+  
+  .face:hover .coder-img {
+    clip-path: polygon(100% 0, 100% 0, 100% 100%, 100% 100%); /* Hide right image on hover */
+  }
+  
   .face .designer-bg,
   .face .coder-bg {
     display: none;
   }
+  
   .face .face-img {
     display: none;
   }
