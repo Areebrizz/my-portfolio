@@ -1917,10 +1917,6 @@ button:active,
 .face {
   width: 100%;
   position: relative;
-  /* Show default image */
-  /* Descriptions */
-  /* Inline media queries */
-  /* Full sliding half face experience */
 }
 .face .face-img {
   display: block;
@@ -1937,7 +1933,6 @@ button:active,
   display: block;
   z-index: 10;
   height: 20%;
-  /* vertical centering */
   margin: auto;
   top: 0;
   bottom: 0;
@@ -1953,14 +1948,14 @@ button:active,
   right: 0;
   text-align: right;
 }
-.face .designer-img,
-.face .coder-img,
+/* REMOVED the display: none for images - this was hiding them! */
 .face .designer-bg,
 .face .coder-bg,
 .face .coder p,
 .face .designer p {
   display: none;
 }
+
 @media only screen and (min-width: 320px) {
   .face .coder h1,
   .face .designer h1 {
@@ -1981,6 +1976,7 @@ button:active,
     padding: 0 0 0 0.14em;
   }
 }
+
 @media only screen and (min-width: 375px) {
   .face .coder h1,
   .face .designer h1 {
@@ -1988,6 +1984,7 @@ button:active,
     font-size: 2.6rem;
   }
 }
+
 @media only screen and (min-width: 414px) {
   .face .coder h1,
   .face .designer h1 {
@@ -1995,6 +1992,7 @@ button:active,
     font-size: 3rem;
   }
 }
+
 @media only screen and (min-width: 500px) {
   .face .coder h1,
   .face .designer h1 {
@@ -2002,6 +2000,7 @@ button:active,
     font-size: 3.6rem;
   }
 }
+
 @media only screen and (min-width: 600px) {
   .face .coder h1,
   .face .designer h1 {
@@ -2009,6 +2008,7 @@ button:active,
     font-size: 4.6rem;
   }
 }
+
 @media only screen and (min-width: 768px) {
   .face .coder,
   .face .designer {
@@ -2028,6 +2028,7 @@ button:active,
     margin: 0px;
   }
 }
+
 @media only screen and (min-width: 900px) {
   .face .coder,
   .face .designer {
@@ -2039,6 +2040,7 @@ button:active,
     font-size: 6.4rem;
   }
 }
+
 @media only screen and (min-width: 1024px) {
   .face .coder,
   .face .designer {
@@ -2056,7 +2058,61 @@ button:active,
     line-height: 1.4;
   }
 }
+
 @media only screen and (min-width: 1140px) {
+  .face {
+    width: 1040px;
+    height: 600px;
+    position: relative;
+  }
+  .face .coder,
+  .face .designer {
+    width: 520px;
+    height: 600px;
+    top: 0px;
+    position: absolute;
+  }
+  .face .coder h1,
+  .face .designer h1 {
+    font-size: 82px;
+    font-size: 8.2rem;
+  }
+  .face .coder .description,
+  .face .designer .description {
+    position: absolute;
+    top: 180px;
+    width: 290px;
+  }
+  .face .coder .arrow,
+  .face .designer .arrow {
+    width: 85px;
+    height: 140px;
+    background: url(../images/sprite.png) no-repeat;
+    display: block;
+    position: absolute;
+    top: 20px;
+  }
+  .face .coder {
+    text-align: left;
+    right: 0px;
+  }
+  .face .coder .description {
+    right: 0px;
+  }
+  .face .coder .arrow {
+    right: 0px;
+    background-position: 0px -751px;
+  }
+  .face .designer {
+    left: 0px;
+  }
+  .face .designer .description {
+    left: 0px;
+  }
+  .face .designer .arrow {
+    left: 0px;
+    background-position: 0px -892px;
+  }
   .face .designer-img,
   .face .coder-img {
     width: 420px;
@@ -2066,22 +2122,18 @@ button:active,
     display: block;
     z-index: 1;
   }
-  
   .face .designer-img {
     background: url(../images/formalpic111.png) center center / cover no-repeat;
     left: 100px;
   }
-  
   .face .coder-img {
     background: url(../images/formalpic1112.png) center center / cover no-repeat;
     right: 100px;
   }
-  
   .face .designer-bg,
   .face .coder-bg {
-    display: none; /* Hide the bottom backgrounds */
+    display: none;
   }
-  
   .face .face-img {
     display: none;
   }
