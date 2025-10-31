@@ -2064,48 +2064,73 @@ button:active,
     width: 1040px;
     height: 600px;
     position: relative;
-    overflow: hidden; /* Important for clean edges */
+    overflow: hidden;
   }
   
   .face .designer-img,
   .face .coder-img {
-    width: 50%; /* Each takes exactly half */
+    width: 50%;
     height: 100%;
     position: absolute;
     top: 0;
     display: block;
     z-index: 1;
-    transition: all 0.3s ease; /* Smooth transition */
+    transition: all 0.3s ease;
   }
   
   .face .designer-img {
     background: url(../images/formalpic111.png) center center / cover no-repeat;
     left: 0;
+    /* Force initial position */
+    transform: translateX(0);
+    width: 50% !important;
   }
   
   .face .coder-img {
     background: url(../images/formalpic1112.png) center center / cover no-repeat;
     right: 0;
+    /* Force initial position */
+    transform: translateX(0);
+    width: 50% !important;
   }
   
-  /* Hover effects - expand the hovered side */
+  /* Reset any JavaScript that might be interfering */
+  .face .designer-img,
+  .face .coder-img {
+    width: 50% !important;
+    left: 0 !important;
+    right: 0 !important;
+  }
+  
+  .face .designer-img {
+    clip-path: polygon(0 0, 50% 0, 50% 100%, 0 100%);
+  }
+  
+  .face .coder-img {
+    clip-path: polygon(50% 0, 100% 0, 100% 100%, 50% 100%);
+  }
+  
+  /* Hover effects */
   .face .designer:hover ~ .designer-img {
-    width: 70%;
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+    width: 100% !important;
     z-index: 2;
   }
   
   .face .coder:hover ~ .coder-img {
-    width: 70%;
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+    width: 100% !important;
     z-index: 2;
   }
   
-  /* Shrink the opposite side on hover */
   .face .designer:hover ~ .coder-img {
-    width: 30%;
+    clip-path: polygon(100% 0, 100% 0, 100% 100%, 100% 100%);
+    width: 0% !important;
   }
   
   .face .coder:hover ~ .designer-img {
-    width: 30%;
+    clip-path: polygon(0 0, 0 0, 0 100%, 0 100%);
+    width: 0% !important;
   }
   
   .face .designer-bg,
