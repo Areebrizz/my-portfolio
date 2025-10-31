@@ -2060,72 +2060,99 @@ button:active,
 }
 
 @media only screen and (min-width: 1140px) {
-  .face {
-    width: 1040px;
-    height: 600px;
-    position: relative;
-    overflow: hidden;
-    margin: 0 auto; /* Center the hero section */
-    display: flex;
-    justify-content: center; /* Center the split images */
-  }
-  
-  .face .designer-img,
-  .face .coder-img {
-    width: 400px; /* Fixed width for each half */
-    height: 100%;
-    position: relative;
-    display: block;
-    z-index: 1;
-    transition: all 0.3s ease;
-    flex-shrink: 0;
-  }
-  
-  .face .designer-img {
-    background: url(../images/formalpic111.png) center center / cover no-repeat;
-  }
-  
-  .face .coder-img {
-    background: url(../images/formalpic1112.png) center center / cover no-repeat;
-  }
-  
-  /* Hover containers covering each image */
-  .face .designer,
-  .face .coder {
-    width: 400px;
-    height: 100%;
-    position: absolute;
-    top: 0;
-    z-index: 10;
-  }
-  
-  .face .designer {
-    left: calc(50% - 400px); /* Center left half */
-  }
-  
-  .face .coder {
-    left: 50%; /* Center right half */
-  }
-  
-  /* Hover effects */
-  .face .designer:hover ~ .designer-img {
-    width: 800px;
-    z-index: 2;
-  }
-  
-  .face .coder:hover ~ .coder-img {
-    width: 800px;
-    z-index: 2;
-  }
-  
-  .face .designer-bg,
-  .face .coder-bg {
-    display: none;
-  }
-  
-  .face .face-img {
-    display: none;
-  }
+    /* 1. Base Container Setup */
+    .face {
+        width: 1040px; /* Restored from old version */
+        height: 600px; /* Restored from old version */
+        position: relative;
+        overflow: hidden; /* Ensures images are clipped if they scale */
+    }
+
+    /* 2. Full-Width Anchor Tags (The Interactive Area) */
+    .face a {
+        /* Each anchor covers 50% of the .face container */
+        width: 50%; /* 520px */
+        height: 600px;
+        position: absolute;
+        top: 0;
+        z-index: 10;
+        overflow: hidden; 
+        transition: opacity 0.4s ease; /* Transition for the main link/image */
+    }
+
+    .face a:first-child { /* Designer Link - Left Side */
+        left: 0;
+    }
+    .face a:last-child { /* Coder Link - Right Side */
+        right: 0;
+    }
+
+    /* 3. Text Wrappers (Positioned inside the anchor tags) */
+    .face .designer,
+    .face .coder {
+        width: 290px;
+        position: absolute;
+        top: 180px;
+        z-index: 20; /* Keep text above the image */
+    }
+    .face .designer {
+        left: 0px;
+        text-align: left;
+    }
+    .face .coder {
+        right: 0px;
+        text-align: right;
+    }
+
+    /* 4. Image Elements (Now children of the anchor tags) */
+    .face .designer-img,
+    .face .coder-img {
+        width: 420px;
+        height: 600px;
+        position: absolute;
+        top: 0;
+        display: block;
+        z-index: 1; /* Images sit behind the text content */
+        transition: opacity 0.4s ease, transform 0.4s ease; 
+        background-position: center center;
+        background-repeat: no-repeat;
+        background-size: cover;
+    }
+
+    /* Position the two images on the screen's canvas */
+    .face .designer-img {
+        /* Positioned 100px from the far left of the 1040px container */
+        left: 100px;
+        background-image: url(../images/formalpic111.png);
+    }
+    .face .coder-img {
+        /* Positioned 100px from the far right of the 1040px container */
+        right: 100px;
+        background-image: url(../images/formalpic1112.png);
+    }
+    
+    /* Hide the non-split images */
+    .face .face-img,
+    .face .designer-bg,
+    .face .coder-bg {
+        display: none; 
+    }
+
+    /* 5. Hover Effects: Fade out the other half */
+
+    /* By default, slightly fade the non-hovered image */
+    .face a:not(:hover) {
+        opacity: 0.8;
+    }
+
+    /* When hovering, ensure the hovered side is fully visible and scaled */
+    .face a:hover {
+        opacity: 1; /* Fully visible */
+    }
+    .face a:hover .designer-img,
+    .face a:hover .coder-img {
+        transform: scale(1.03); /* Subtle zoom/forward effect */
+    }
 }
 /* Form Styles */
 .form {
