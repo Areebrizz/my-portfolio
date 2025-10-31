@@ -2067,11 +2067,11 @@ button:active,
     overflow: hidden;
   }
   
-  /* Images - positioned for 50/50 split */
+  /* Keep the original image positioning but fix the widths */
   .face .designer-img,
   .face .coder-img {
-    width: 50%;
-    height: 100%;
+    width: 50% !important; /* Force 50% width */
+    height: 600px;
     position: absolute;
     top: 0;
     display: block;
@@ -2081,22 +2081,21 @@ button:active,
   
   .face .designer-img {
     background: url(../images/formalpic111.png) center center / cover no-repeat;
-    left: 0;
+    left: 0 !important; /* Force left position */
   }
   
   .face .coder-img {
     background: url(../images/formalpic1112.png) center center / cover no-repeat;
-    left: 50%; /* Start from the center */
+    right: 0 !important; /* Force right position */
   }
   
-  /* Hover containers - these handle the hover effect */
+  /* Keep all the original hover container styles */
   .face .coder,
   .face .designer {
     width: 520px;
     height: 600px;
-    position: absolute;
     top: 0px;
-    z-index: 10; /* Above the images */
+    position: absolute;
   }
   
   .face .coder {
@@ -2109,23 +2108,13 @@ button:active,
   
   /* Hover effects */
   .face .designer:hover ~ .designer-img {
-    width: 100%;
-    left: 0;
+    width: 100% !important;
     z-index: 2;
-  }
-  
-  .face .designer:hover ~ .coder-img {
-    left: 100%; /* Push the other image out */
   }
   
   .face .coder:hover ~ .coder-img {
-    width: 100%;
-    left: 0; /* Take over from left */
+    width: 100% !important;
     z-index: 2;
-  }
-  
-  .face .coder:hover ~ .designer-img {
-    left: -100%; /* Push the other image out */
   }
   
   .face .designer-bg,
@@ -2136,6 +2125,7 @@ button:active,
   .face .face-img {
     display: none;
   }
+}
 }
 /* Form Styles */
 .form {
