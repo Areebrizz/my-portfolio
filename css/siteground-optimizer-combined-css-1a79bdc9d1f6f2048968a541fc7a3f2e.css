@@ -2057,96 +2057,31 @@ button:active,
   }
 }
 @media only screen and (min-width: 1140px) {
-  .face {
-    width: 1040px;
-    height: 600px;
-    position: relative;
-    /* Face images */
-    /* Background images */
-    /* Hide default image with no effects */
-  }
-  .face .coder,
-  .face .designer {
-    width: 520px;
-    height: 600px;
-    top: 0px;
-    position: absolute;
-  }
-  .face .coder h1,
-  .face .designer h1 {
-    font-size: 82px;
-    font-size: 8.2rem;
-  }
-  .face .coder .description,
-  .face .designer .description {
-    position: absolute;
-    top: 180px;
-    width: 290px;
-  }
-  .face .coder .arrow,
-  .face .designer .arrow {
-    width: 85px;
-    height: 140px;
-    background: url(../images/sprite.png) no-repeat;
-    display: block;
-    position: absolute;
-    top: 20px;
-  }
-  .face .coder {
-    text-align: left;
-    right: 0px;
-  }
-  .face .coder .description {
-    right: 0px;
-  }
-  .face .coder .arrow {
-    right: 0px;
-    background-position: 0px -751px;
-  }
-  .face .designer {
-    left: 0px;
-  }
-  .face .designer .description {
-    left: 0px;
-  }
-  .face .designer .arrow {
-    left: 0px;
-    background-position: 0px -892px;
-  }
   .face .designer-img,
   .face .coder-img {
     width: 420px;
     height: 600px;
     position: absolute;
     top: 0;
-    background: url(../images/formalpic111.png) 0 0 no-repeat;
     display: block;
     z-index: 1;
   }
+  
   .face .designer-img {
-    background-position: 0px -600px;
+    background: url(../images/formalpic111.png) center center / cover no-repeat;
     left: 100px;
   }
+  
   .face .coder-img {
-    background-position: 100% 0px;
+    background: url(../images/formalpic1112.png) center center / cover no-repeat;
     right: 100px;
   }
+  
   .face .designer-bg,
   .face .coder-bg {
-    width: 420px;
-    height: 200px;
-    position: absolute;
-    bottom: 0px;
-    background: url(../images/formalpic111.png) 0 -1300px no-repeat;
-    display: block;
+    display: none; /* Hide the bottom backgrounds */
   }
-  .face .designer-bg {
-    left: 100px;
-  }
-  .face .coder-bg {
-    right: 100px;
-    background-position: 100% -1300px;
-  }
+  
   .face .face-img {
     display: none;
   }
