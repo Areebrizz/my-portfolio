@@ -2060,51 +2060,94 @@ button:active,
 }
 
 @media only screen and (min-width: 1140px) {
-    /* 1. Base Container Setup */
+    /* ---------------------------------------------------- */
+    /* 1. CONTAINER SETUP */
+    /* ---------------------------------------------------- */
     .face {
-        width: 1040px; /* Restored from old version */
-        height: 600px; /* Restored from old version */
-        position: relative;
-        overflow: hidden; /* Ensures images are clipped if they scale */
-    }
-
-    /* 2. Full-Width Anchor Tags (The Interactive Area) */
-    .face a {
-        /* Each anchor covers 50% of the .face container */
-        width: 50%; /* 520px */
+        width: 1040px;
         height: 600px;
-        position: absolute;
-        top: 0;
-        z-index: 10;
-        overflow: hidden; 
-        transition: opacity 0.4s ease; /* Transition for the main link/image */
+        position: relative;
+        overflow: hidden; /* Ensures scaling doesn't cause scrollbars */
     }
 
-    .face a:first-child { /* Designer Link - Left Side */
-        left: 0;
-    }
-    .face a:last-child { /* Coder Link - Right Side */
-        right: 0;
+    /* Hide the non-split image and backgrounds */
+    .face .face-img,
+    .face .designer-bg,
+    .face .coder-bg {
+        display: none;
     }
 
-    /* 3. Text Wrappers (Positioned inside the anchor tags) */
-    .face .designer,
-    .face .coder {
-        width: 290px;
-        position: absolute;
-        top: 180px;
-        z-index: 20; /* Keep text above the image */
-    }
+    /* ---------------------------------------------------- */
+    /* 2. INTERACTIVE ANCHORS & TEXT WRAPPERS (The 50% halves) */
+    /* ---------------------------------------------------- */
+    .face .coder,
     .face .designer {
+        /* These act as the clickable/hoverable 50% blocks */
+        width: 520px;
+        height: 600px;
+        top: 0px;
+        position: absolute;
+        z-index: 20; /* Keep anchors and text above the images */
+        background-color: transparent;
+        transition: opacity 0.4s ease; /* For smooth fading of the text */
+    }
+
+    /* Designer side (Left) */
+    .face a:first-child .designer {
         left: 0px;
         text-align: left;
     }
-    .face .coder {
+    .face a:first-child .description {
+        left: 0px;
+        /* Custom padding/margin if needed here */
+    }
+
+    /* Coder side (Right) */
+    .face a:last-child .coder {
         right: 0px;
         text-align: right;
     }
+    .face a:last-child .description {
+        right: 0px;
+        /* Custom padding/margin if needed here */
+    }
 
-    /* 4. Image Elements (Now children of the anchor tags) */
+    /* Restore text and description positioning */
+    .face .coder h1,
+    .face .designer h1 {
+        font-size: 82px;
+        font-size: 8.2rem;
+    }
+    .face .coder .description,
+    .face .designer .description {
+        position: absolute;
+        top: 180px;
+        width: 290px;
+        transition: transform 0.4s ease; /* Transition for text movement on hover */
+    }
+    
+    /* Arrow styling (assuming you want to keep the arrow from the old code) */
+    .face .coder .arrow,
+    .face .designer .arrow {
+        width: 85px;
+        height: 140px;
+        background: url(../images/sprite.png) no-repeat;
+        display: block;
+        position: absolute;
+        top: 20px;
+    }
+    .face .coder .arrow {
+        right: 0px;
+        background-position: 0px -751px;
+    }
+    .face .designer .arrow {
+        left: 0px;
+        background-position: 0px -892px;
+    }
+
+    /* ---------------------------------------------------- */
+    /* 3. IMAGE ELEMENTS (The half-half split) */
+    /* ---------------------------------------------------- */
     .face .designer-img,
     .face .coder-img {
         width: 420px;
@@ -2112,46 +2155,77 @@ button:active,
         position: absolute;
         top: 0;
         display: block;
-        z-index: 1; /* Images sit behind the text content */
-        transition: opacity 0.4s ease, transform 0.4s ease; 
-        background-position: center center;
+        z-index: 10; /* Lower than links, higher than background */
+        transition: transform 0.4s ease, opacity 0.4s ease;
+        background-size: cover; /* Use cover for the new separate images */
         background-repeat: no-repeat;
-        background-size: cover;
+        background-position: center;
     }
 
-    /* Position the two images on the screen's canvas */
+    /* Designer Image (Left Half) */
     .face .designer-img {
-        /* Positioned 100px from the far left of the 1040px container */
         left: 100px;
+        /* Use your first separate image */
         background-image: url(../images/formalpic111.png);
     }
+
+    /* Coder Image (Right Half) */
     .face .coder-img {
-        /* Positioned 100px from the far right of the 1040px container */
         right: 100px;
-        background-image: url(../images/formalpic1112.png);
-    }
-    
-    /* Hide the non-split images */
-    .face .face-img,
-    .face .designer-bg,
-    .face .coder-bg {
-        display: none; 
+        /* Use your second separate image */
+        background-image: url(../images/formalpic1112.png); 
     }
 
-    /* 5. Hover Effects: Fade out the other half */
+    /* ---------------------------------------------------- */
+    /* 4. HOVER INTERACTION LOGIC */
+    /* ---------------------------------------------------- */
 
-    /* By default, slightly fade the non-hovered image */
-    .face a:not(:hover) {
+    /* Default state: slightly dim both images/text */
+    .face .designer-img,
+    .face .coder-img {
         opacity: 0.8;
     }
-
-    /* When hovering, ensure the hovered side is fully visible and scaled */
-    .face a:hover {
-        opacity: 1; /* Fully visible */
+    .face .coder .description,
+    .face .designer .description {
+        opacity: 0.8;
     }
-    .face a:hover .designer-img,
-    .face a:hover .coder-img {
-        transform: scale(1.03); /* Subtle zoom/forward effect */
+    
+    /* Hover Designer Side (a:first-child) */
+    .face a:first-child:hover ~ .designer-img {
+        /* HOVERED IMAGE: Scale, z-index up, and full opacity */
+        transform: scale(1.05);
+        opacity: 1;
+        z-index: 15;
+    }
+    .face a:first-child:hover ~ .coder-img {
+        /* NON-HOVERED IMAGE: Dim/disappear smoothly */
+        opacity: 0.3;
+        z-index: 10;
+        transform: scale(1); /* Ensure it is not scaled */
+    }
+    .face a:first-child:hover .description {
+        /* HOVERED TEXT: Full opacity and slight move */
+        opacity: 1;
+        transform: translateX(10px);
+    }
+    
+    /* Hover Coder Side (a:last-child) */
+    .face a:last-child:hover ~ .coder-img {
+        /* HOVERED IMAGE: Scale, z-index up, and full opacity */
+        transform: scale(1.05);
+        opacity: 1;
+        z-index: 15;
+    }
+    .face a:last-child:hover ~ .designer-img {
+        /* NON-HOVERED IMAGE: Dim/disappear smoothly */
+        opacity: 0.3;
+        z-index: 10;
+        transform: scale(1); /* Ensure it is not scaled */
+    }
+    .face a:last-child:hover .description {
+        /* HOVERED TEXT: Full opacity and slight move */
+        opacity: 1;
+        transform: translateX(-10px);
     }
 }
 /* Form Styles */
