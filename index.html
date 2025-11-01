@@ -153,34 +153,49 @@ window._wpemojiSettings = {"baseUrl":"https:\/\/s.w.org\/images\/core\/emoji\/16
 			<div class="row">
 				<div class="col-12">
 					<div id="face" class="face">
+						
+						<!-- LEFT INTERACTIVE LINK (Designer/Engineer) -->
 						<a href="portfolio.html">
 							<div id="designer" class="designer">
 								<div id="designer-desc" class="description">
 									<h1>Mechanical Engineer</h1>
 									<p>Specializing in automation, robotics, and innovative engineering solutions.</p>
+									<!-- Optionally add the arrow element here if using a sprite -->
+									<!-- <span class="arrow"></span> -->
 								</div>
 							</div>
 						</a>
 
+						<!-- RIGHT INTERACTIVE LINK (Coder/Automation Specialist) -->
 						<a href="about.html">
 							<div id="coder" class="coder">
 								<div id="coder-desc" class="description">
-									<h1><span class="chevron-left"><</span>Automation Specialist<span class="chevron-right">></span></h1>
+									<h1><span class="chevron-left">&lt;</span>Automation Specialist<span class="chevron-right">&gt;</span></h1>
 									<p>Creating efficient and smart automated systems for real-world challenges.</p>
+									<!-- Optionally add the arrow element here if using a sprite -->
+									<!-- <span class="arrow"></span> -->
 								</div>
 							</div>
 						</a>
 
-						<img id="face-img" class="face-img" src="images/meai.png" alt="Muhammad Areeb Rizwan Siddiqui - Mechanical Engineer">
-
+						<!-- 
+							CRITICAL FIX: 
+							These two image divs MUST follow the anchor tags (<a>) 
+							for the CSS sibling selector (~) to work correctly for the hover effect.
+						-->
 						<div id="designer-img" class="designer-img"></div>
 						<div id="coder-img" class="coder-img"></div>
+						
+						<!-- These elements are hidden by the CSS but kept here for completeness -->
+						<img id="face-img" class="face-img" src="images/meai.png" alt="Muhammad Areeb Rizwan Siddiqui - Mechanical Engineer">
 						<div id="designer-bg" class="designer-bg"></div>
 						<div id="coder-bg" class="coder-bg"></div>
 					</div>
 				</div>
 			</div>
 		</section>
+	</div>
+
 
 		<div>
 			<section class="dark">
