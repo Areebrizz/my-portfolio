@@ -2078,38 +2078,53 @@ button:active,
     }
 
     /* ---------------------------------------------------- */
-    /* 2. INTERACTIVE ANCHORS & TEXT WRAPPERS (The 50% halves) */
+    /* 2. INTERACTIVE ANCHORS (Set 50% clickable area) */
+    /* ---------------------------------------------------- */
+    .face a {
+        /* CRITICAL: Makes the entire half of the screen clickable/hoverable */
+        width: 50%; /* 520px */
+        height: 600px;
+        top: 0;
+        position: absolute;
+        z-index: 30; /* Ensure links are above everything else */
+    }
+    .face a:first-child {
+        left: 0;
+    }
+    .face a:last-child {
+        right: 0;
+    }
+
+
+    /* ---------------------------------------------------- */
+    /* 3. TEXT WRAPPERS (Positioned inside the <a> tags) */
     /* ---------------------------------------------------- */
     .face .coder,
     .face .designer {
-        /* These act as the clickable/hoverable 50% blocks */
-        width: 520px;
+        /* Set position to relative inside the absolutely positioned anchor */
+        width: 100%; 
         height: 600px;
         top: 0px;
-        position: absolute;
-        z-index: 20; /* Keep anchors and text above the images */
+        position: relative; 
+        z-index: 20; /* Keep text above the images (z-index 10) */
         background-color: transparent;
         transition: opacity 0.4s ease; /* For smooth fading of the text */
     }
 
     /* Designer side (Left) */
     .face a:first-child .designer {
-        left: 0px;
         text-align: left;
     }
     .face a:first-child .description {
         left: 0px;
-        /* Custom padding/margin if needed here */
     }
 
     /* Coder side (Right) */
     .face a:last-child .coder {
-        right: 0px;
         text-align: right;
     }
     .face a:last-child .description {
         right: 0px;
-        /* Custom padding/margin if needed here */
     }
 
     /* Restore text and description positioning */
@@ -2123,7 +2138,7 @@ button:active,
         position: absolute;
         top: 180px;
         width: 290px;
-        transition: transform 0.4s ease; /* Transition for text movement on hover */
+        transition: transform 0.4s ease, opacity 0.4s ease; /* Transition for text movement and opacity on hover */
     }
     
     /* Arrow styling (assuming you want to keep the arrow from the old code) */
@@ -2146,7 +2161,7 @@ button:active,
     }
 
     /* ---------------------------------------------------- */
-    /* 3. IMAGE ELEMENTS (The half-half split) */
+    /* 4. IMAGE ELEMENTS (The half-half split) */
     /* ---------------------------------------------------- */
     .face .designer-img,
     .face .coder-img {
@@ -2155,9 +2170,9 @@ button:active,
         position: absolute;
         top: 0;
         display: block;
-        z-index: 10; /* Lower than links, higher than background */
+        z-index: 10; /* Lower than links and text */
         transition: transform 0.4s ease, opacity 0.4s ease;
-        background-size: cover; /* Use cover for the new separate images */
+        background-size: cover; 
         background-repeat: no-repeat;
         background-position: center;
     }
@@ -2165,19 +2180,17 @@ button:active,
     /* Designer Image (Left Half) */
     .face .designer-img {
         left: 100px;
-        /* Use your first separate image */
         background-image: url(../images/formalpic111.png);
     }
 
     /* Coder Image (Right Half) */
     .face .coder-img {
         right: 100px;
-        /* Use your second separate image */
         background-image: url(../images/formalpic1112.png); 
     }
 
     /* ---------------------------------------------------- */
-    /* 4. HOVER INTERACTION LOGIC */
+    /* 5. HOVER INTERACTION LOGIC */
     /* ---------------------------------------------------- */
 
     /* Default state: slightly dim both images/text */
